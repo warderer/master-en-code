@@ -1,0 +1,57 @@
+/* *
+CLON DE
+https://codepen.io/Eng_M/pen/RwWVrrM
+*/
+
+body{
+    padding: 0;
+    margin: 0;
+    background:#000;
+    color:#fff;
+}
+
+main{
+    width: 1140px;
+    display:block;
+    margin:auto;
+}
+
+.navbar {
+    background-color:#1e1f26;
+    width: 100%;
+    padding:0;
+    margin:0;
+}
+
+
+.title-container{
+    background-color:#d9d9d9;
+    width: 100%;
+}
+
+.title-container h1 {
+    margin:0;
+    padding: 1em 0;
+    text-align: center;
+    color: #000;
+}
+
+.gallery{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
+}
+
+.gallery-item {
+    flex-basis: 25%;
+    display: block;
+    height:auto;
+    margin: 15px;
+}
+
+.gallery-item img{
+    max-width: 250px;
+    border: 5px solid #fff;
+}

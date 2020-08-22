@@ -1,0 +1,29 @@
+.fix-card {
+    width: 15rem;
+    margin:2rem;
+}
+
+.fix-width-card{
+    width: 25rem;
+}
+
+.rojo {
+    background-color: darkred;
+}
+
+.verde{
+    background-color: darkolivegreen;
+}
+
+.amarillo{
+    background-color: darkgoldenrod;
+}
+
+.negro{
+    background-color: black;
+}
+
+.fix-size{
+    /* width: 5rem; */
+    height: 5rem;
+}

@@ -1,0 +1,37 @@
+html, body{
+    height:100%;
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+
+.madre{
+    height:40%;
+    width:40%;
+    background-color:red;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.padre {
+    height:40%;
+    width: 40%;
+    background-color:blue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hijo {
+    background-color: blue;
+    width: 15%;
+    height: 15%;
+}
+
+.hija {
+    background-color: red;
+    width: 15%;
+    height: 15%;
+}

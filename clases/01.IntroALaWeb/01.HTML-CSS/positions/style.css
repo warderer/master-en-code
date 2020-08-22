@@ -1,0 +1,37 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin:0px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.content {
+    background-color:wheat;
+}
+
+p{
+    margin-left:300px;
+    margin-right: 300px;
+}
+
+.footer {
+    background-color: black;
+    color:white;
+    width: 100%;
+    position:absolute;
+    bottom:0px;
+}
+
+.btn-flotante{
+    background-color:green;
+    height: 40px;
+    width: 40px;
+    position:fixed;
+    border-radius: 50px;
+    bottom:60px;
+    right: 30px;
+}

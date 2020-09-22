@@ -10,6 +10,9 @@ const randomGuess = (numero) => (numero === Math.floor(Math.random()*11)) ? "Bue
 console.log("02. randomGuess:",randomGuess(5));
 
 // 03.Escribe una función que reciba un string como parametro y regrese el string con "Py" al principio, si el string ya tiene "Py" regresar el string original Ej ---> addPy("hola") resultado ---> "Pyhola"
+const addPy = (string) => /^Py/.test(string) ? string : "Py"+string;
+console.log("03.addPy(hola)",addPy("hola")); //Pyhola
+console.log("03.addPy(Pyhola)",addPy("Pyhola")); //Pyhola
 
 // 04.Escriba una funcion JavaScript para eliminar un carácter en la posición especificada de una cadena dada y devolver la nueva cadena Ej ---> removeChar("Hola",2) resultado --> "Hoa"
 const removeChar = (string,position) => (string.split("").filter((element,index) => index != position ? element : null)).join(""); //Convierto el String a Arreglo (Split), Recorro el arreglo y hago null solo la posición a remover del arreglo (filter), y finalmente vuelvo a convertir el resultado a String (join).
@@ -36,7 +39,7 @@ const changeMayus = (texto)=>{
     });
     return texto.join("");
 }
-console.log("06.changeMayus(ComoEstas):",changeMayus("ComoEstas"));
+console.log("06. changeMayus(ComoEstas):",changeMayus("ComoEstas"));
 
 // 07.Escriba una función de JavaScript para redondear un número a una cantidad específica de dígitos. Ej ---> roundNumber(2.3453467335,2) resultado -> 2.34
 const roundNumber = (number,roundTo)=>{
@@ -47,12 +50,20 @@ const roundNumber = (number,roundTo)=>{
         return numbArray.join("").slice(0,dotIndex+roundTo+1); //Vuelvo a armar el string a partir del arreglo, y corto de acuerdo al número de decimales indicados
     } catch (error) {
         console.log(error);
-    }
-}
+    };
+};
 console.log("07. Redondeando 2.3453467335 a 2 dec:",roundNumber(2.3453467335,2));
 console.log("07. Redondeando 12.3463467335 a 2 dec:",roundNumber(12.3463467335,2));
 
 // 08.Escriba una función de de JavaScript para crear una nueva cadena a partir de una cadena dada con el primer carácter de la cadena dada agregado al principio y al final. Ej --> addFisrt("Hola") resultado ---> "HHolaH"
+const addFirst = (string) => {
+    const first = string[0];
+    string = string.split("");
+    string.push(first);
+    string.unshift(first);
+    return string.join("");
+};
+console.log("08. addFirst(Hola):",addFirst("Hola")); //HHolaH
 
 // 09.Escriba una función deJavaScript para verificar si dos valores enteros dados están en el rango 50..99 (inclusive). Devuelve verdadero si alguno de ellos está en dicho rango. Ej --> inRange(55,47) resultado ---> true
 const inRange = (num1,num2) => (num1 >= 50 && num1 <=99 || num2 >= 50 && num2 <=99 ? true : false);
@@ -70,6 +81,11 @@ console.log("10. Contar vocales en Hola MundO:",countVowels("Hola mundO")); //[ 
 // 13.Escriba una función de JavaScript para encontrar la diferencia de dos matrices. Ej difference([1, 2, 3], [100, 2, 1, 10]) Resultado --> ["3", "10", "100"]
 
 // 14.Escriba una función de JavaScript para eliminar. Valores 'nulo', '0', '""', 'falso', 'indefinido' y 'NaN' de una matriz. Ej removeFalsy([NaN, 0, 15, false, -22, '',undefined, 47, null]) resultado ----> [15, -22, 47]
+const removeFalsy = (array) => array.filter((element) => {
+        if (element||false) return element;
+});
+
+console.log("14. removeFalsy: ",removeFalsy([NaN, 0, 15, false, -22, '',undefined, 47, null]));// resultado ----> [15, -22, 47])
 
 // 15.Escriba una función de JavaScript para ordenar la siguiente matriz de objetos por valor de título. let ibrary = [ { author: 'Bill Gates', title: 'The Road Ahead', libraryID: 1254}, { author: 'Steve Jobs', title: 'Walter Isaacson', libraryID: 4264}, { author: 'Suzanne Collins', title: 'Mockingjay: The Final Book of The Hunger Games', libraryID: 3245} ];
 

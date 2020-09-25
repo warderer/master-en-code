@@ -16,3 +16,20 @@ request.get("https://swapi.dev/api/people/1", (error, response, body) =>{
     console.log(bodyEnFormatoJSON.name);
     //console.info(error);
 });
+
+/* Convirtiendola a función... */
+function getPeopleById (id) {
+    request.get(`https://swapi.dev/api/people/${id}`, (error, response, body) =>{
+        if (response.statusCode === 200) {
+            //Petición Éxitosa
+            const bodyEnFormatoJSON = JSON.parse(body); //Parse convierte JSON a Objeto
+            console.log(bodyEnFormatoJSON);
+            console.log(bodyEnFormatoJSON.name);
+        } else {
+            // Error
+            console.log(`Ocurrio un Error: ${response.statusCode} ${response.statusMessage}`);
+        };
+    });
+};
+
+getPeopleById(2);

@@ -1,0 +1,14 @@
+$primary_color: #FF5733; /* Esta es una variable en SASS */
+$font-size: 18px;
+
+body {
+    font-size: $font-size;
+
+    h1{
+        color: $primary_color;
+    }
+
+    .my-div{
+        background-color: $primary-color;
+    }
+}

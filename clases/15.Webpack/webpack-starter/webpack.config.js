@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     module:{
@@ -22,9 +23,17 @@ module.exports = {
                 }
             },
             {
+                test: /\.scss$/,
+                use: [ //El orden de los Loader SI importa
+                    "style-loader", // Procesa estilos en linea
+                    "css-loader", // Procesa estilos en archivos CSS
+                    "sass-loader" // Procesa estilos en archivos SCSS (SASS)
+                ]
+            },
+            {
                 test: /\.(png|jpg|svg|gif|jpeg)$/,
                 use: [
-                    'file-loader' //Se puede colocar de manera implicita sin usar la palabra loader:
+                    "file-loader" //Se puede colocar de manera implicita sin usar la palabra loader:
                 ]
             }
         ]
@@ -34,6 +43,10 @@ module.exports = {
             template:"./src/index.html", //Que archivo HTML va a ser el base de mi proyecto en la carpeta src
             filename:"./index.html" // Que único archivo de HTML se va a generar en la carpeta dist
             //El archivo de conf. de webpack simula que se trabaja desde la carpeta dist, por lo que no se necesita especificar.
-        })
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].css", //Webpack se encargará de generar un nombre del archivo de CSS por nosotros.
+            chunkFilename: "[id].css" //Separa el CSS en pedacitos para que dependiendo de la vista solo cargue el CSS necesario. Solo se ejecuta en el caso si hay mucho CSS o es muy grande.
+        }),
     ]
 }

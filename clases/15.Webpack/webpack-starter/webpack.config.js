@@ -20,6 +20,12 @@ module.exports = {
                 use: {
                     loader: "babel-loader" //carga babel
                 }
+            },
+            {
+                test: /\.(png|jpg|svg|gif|jpeg)$/,
+                use: [
+                    'file-loader' //Se puede colocar de manera implicita sin usar la palabra loader:
+                ]
             }
         ]
     },

@@ -13,6 +13,13 @@ module.exports = {
                 ]
                 //test: Significa que tengo que buscar
                 //use: de lo que encontre, que Loader voy a aplicar
+            },
+            {
+                test: /\.js$/, //Va a buscar todos los archivos JS en mi proyecto
+                exclude: /node_modules/, //Le digo que no busque en la carpeta node_modules
+                use: {
+                    loader: "babel-loader" //carga babel
+                }
             }
         ]
     },

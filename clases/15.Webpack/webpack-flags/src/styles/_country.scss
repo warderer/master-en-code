@@ -1,0 +1,9 @@
+.country{
+    @include size-default; //@include sirve para llamar un Mixin
+    justify-content: center;
+
+    h2 {
+        font-size: 60px;
+        font-weight: bold;
+    }
+}

@@ -1,3 +1,8 @@
+@import 'mixins';
+@import '_country'; //@import trae estilos de otros archivos y siempre busca archivos .scss
+@import '_flags';
+@import '_results';
+
 $bg_color: #fbecc2;
 $font_color: #000000;
 
@@ -16,50 +21,4 @@ main{
     display: flex;
     flex-direction: column;
     background-color: $bg_color;
-}
-
-.country, .flags, .results {
-    width:100%;
-    display: flex;
-    margin: 25px 0px;
-}
-
-.country{
-    justify-content: center;
-
-    h2 {
-        font-size: 60px;
-        font-weight: bold;
-    }
-}
-
-.flags{
-    justify-content: space-around;
-
-    img{
-        width:25%;
-        border-radius: 20px;
-        cursor: pointer;
-
-        &:hover { //& Significa el elemento padre(arriba)
-            -webkit-box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
-            -moz-box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
-            box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
-        }
-    }
-}
-
-.results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h2 {
-        font-size: 40px;
-    }
-
-    span {
-        font-size: 30px;
-        margin-bottom: 20px;
-    }
 }

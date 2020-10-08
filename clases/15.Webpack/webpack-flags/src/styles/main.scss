@@ -1,8 +1,12 @@
+$bg_color: #fbecc2;
+$font_color: #000000;
+
 html,body{
     width: 100%;
     height: 100%;
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
+    color: $font_color;
 }
 
 main{
@@ -11,7 +15,7 @@ main{
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #fbecc2;
+    background-color: $bg_color;
 }
 
 .country, .flags, .results {
@@ -22,40 +26,40 @@ main{
 
 .country{
     justify-content: center;
-}
 
-.country h2 {
-    font-size: 60px;
-    font-weight: bold;
+    h2 {
+        font-size: 60px;
+        font-weight: bold;
+    }
 }
 
 .flags{
     justify-content: space-around;
+
+    img{
+        width:25%;
+        border-radius: 20px;
+        cursor: pointer;
+
+        &:hover { //& Significa el elemento padre(arriba)
+            -webkit-box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
+            -moz-box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
+            box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
+        }
+    }
 }
 
-.flags img{
-    width:25%;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-.flags img:hover{
-    -webkit-box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
-    -moz-box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
-    box-shadow: 2px 2px 22px 2px rgba(0,188,245,1);
-}
-
-.results{
+.results {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
 
-.results h2{
-    font-size: 40px;
-}
+    h2 {
+        font-size: 40px;
+    }
 
-.results span{
-    font-size: 30px;
-    margin-bottom: 20px;
+    span {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
 }

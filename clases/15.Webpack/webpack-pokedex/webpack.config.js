@@ -25,9 +25,10 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [ //El orden de los Loader SI importa
-                    "style-loader", // Procesa estilos en linea
-                    "css-loader", // Procesa estilos en archivos CSS
-                    "sass-loader" // Procesa estilos en archivos SCSS (SASS)
+                    {loader:'style-loader'}, // Procesa estilos en linea
+                    {loader:'css-loader'}, // Procesa estilos en archivos CSS
+                    {loader:'postcss-loader'},
+                    {loader:"sass-loader"} // Procesa estilos en archivos SCSS (SASS)
                 ]
             },
             {

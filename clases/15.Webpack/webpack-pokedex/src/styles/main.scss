@@ -1,0 +1,120 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+
+.poke-card {
+    width: 250px;
+}
+
+.card-header{
+    background-color:#FFC107;
+}
+
+.card-body{
+    background-color: #E3F1FF;
+}
+
+.pokemon-name{
+    font-weight: bold;
+}
+
+.hp-tag-title, .atk-tag-title, .def-tag-title, .spd-tag-title, .spatk-tag-title, .spdef-tag-title {
+    font-size: 12px;
+    font-weight: bold;
+    display: block;
+}
+
+.hp-tag-value, .atk-tag-value, .def-tag-value, .spd-tag-value, .spatk-tag-value, .spdef-tag-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cropped {
+    width: 48px; /* width of container */
+    height: 48px; /* height of container */
+    overflow: hidden;
+}
+
+.cropped img {
+    margin: -24px 0px -24px -5px;
+}
+
+.pokepicture {
+    max-width: 220px;
+    padding-top:10px;
+}
+
+.tag-Grass{
+    background-color: green;
+}
+
+.tag-Poison{
+    background-color: darkmagenta;
+}
+
+.tag-Fire{
+    background-color: red;
+}
+
+.tag-Flying{
+    background-color: royalblue;
+}
+
+.tag-Water{
+    background-color: blue;
+}
+
+.tag-Normal{
+    background-color: #c1c1c1;
+}
+
+.tag-Electric{
+    background-color: yellow;
+}
+
+.tag-Ground {
+    background-color: #EECF7C;
+}
+
+.tag-Fairy{
+    background-color: #F2CDD6;
+}
+
+.tag-Fighting{
+    background-color: #A0846B;
+}
+
+.tag-Psychic{
+    background-color: #F2E8A8 ;
+}
+
+.tag-Rock {
+    background-color: #826D5F ;
+}
+
+.tag-Dark{
+    background-color: #554C5A ;
+}
+
+.tag-Dragon{
+    background-color: #EA683C ;
+}
+
+.tag-Ice {
+    background-color: #84C8E9 ;
+}
+
+.tag-Ghost {
+    background-color: #BD9CE6 ;
+}
+
+.tag-Steel {
+    background-color: #868092 ;
+}
+
+.tag-Bug {
+    background-color: #86C876;
+}
+
+.tag-Fire, .tag-Poison, .tag-Grass, .tag-Water, .tag-Flying, .tag-Fighting, .tag-Rock, .tag-Steel {
+    color:white;
+}

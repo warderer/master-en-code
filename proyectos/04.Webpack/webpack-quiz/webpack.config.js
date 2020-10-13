@@ -27,6 +27,7 @@ module.exports = {
                 use: [ //El orden de los Loader SI importa
                     "style-loader", // Procesa estilos en linea
                     "css-loader", // Procesa estilos en archivos CSS
+                    "postcss-loader",
                     "sass-loader" // Procesa estilos en archivos SCSS (SASS)
                 ]
             },

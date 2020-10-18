@@ -44,6 +44,7 @@ class Game {
         quiz.init()
             .then(() => {
                 if (quiz._QuestionsArray!== null) {
+                    window.$('.alert').hide();
                     console.log(quiz._QuestionsArray);
                     console.log('----')
                     //Test Sigle Question Pick
@@ -61,6 +62,8 @@ class Game {
                     console.log(this._Responses);
                     console.log(this._score);
                 } else {
+                    //window.$ = window.jQuery = require("jquery");
+                    window.$('.alert').show();
                     console.log("No existen preguntas en esa categoría, por favor selecciona otra");
                 }
             })

@@ -3,6 +3,10 @@ import bootstrap from 'bootstrap';
 import Game from './Game';
 import './styles/main.scss';
 
+//Hide no data Alert
+window.$ = window.jQuery = require("jquery");
+window.$('.alert').hide();
+
 document.getElementById("startButton").addEventListener("click", function(){
     event.preventDefault();
     start();

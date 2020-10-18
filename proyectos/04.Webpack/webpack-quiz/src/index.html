@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+
+<body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto mx-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">Quiz</h3>
+            </div>
+        </header>
+
+        <main role="main" class="inner cover" id="mainContent">
+            <h1 class="cover-heading">Pick Your Poison</h1>
+            <p class="lead">Start picking the kind of Quiz you want to answer.</p>
+            <div class="container mt-5">
+                <form role="form" data-toggle="validator">
+                    <div class="row">
+                        <div class="column col-md-12">
+                            <div class="input-group mb-3 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">1</div>
+                                </div>
+                                <select class="custom-select form-group" id="categorySelect">
+                                    <option value="0">Any</option>
+                                    <option value="9">General Knowledge</option>
+                                    <option value="10">Entertainment: Books</option>
+                                    <option value="11">Entertainment: Film</option>
+                                    <option value="12">Entertainment: Music</option>
+                                    <option value="13">Entertainment: Musicals &amp; Theatres</option>
+                                    <option value="14">Entertainment: Television</option>
+                                    <option value="15">Entertainment: Video Games</option>
+                                    <option value="16">Entertainment: Board Games</option>
+                                    <option value="17">Science &amp; Nature</option>
+                                    <option value="18">Science: Computers</option>
+                                    <option value="19">Science: Mathematics</option>
+                                    <option value="20">Mythology</option>
+                                    <option value="21">Sports</option>
+                                    <option value="22">Geography</option>
+                                    <option value="23">History</option>
+                                    <option value="24">Politics</option>
+                                    <option value="25">Art</option>
+                                    <option value="26">Celebrities</option>
+                                    <option value="27">Animals</option>
+                                    <option value="28">Vehicles</option>
+                                    <option value="29">Entertainment: Comics</option>
+                                    <option value="30">Science: Gadgets</option>
+                                    <option value="31">Entertainment: Japanese Anime &amp; Manga</option>
+                                    <option value="32">Entertainment: Cartoon &amp; Animations</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="column col-md-12">
+                            <div class="input-group mb-3 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">2</div>
+                                </div>
+                                <select class="custom-select form-group" id="difficultySelect">
+                                    <option value="">Any Difficulty</option>
+                                    <option value="easy">Easy</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="hard">Hard</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="column col-md-12">
+                            <div class="input-group mb-5 mr-sm-2">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text">3</div>
+                                </div>
+                                <select class="custom-select form-group" id="typeSelect">
+                                    <option value="">Any Type</option>
+                                    <option value="multiple">Multiple Choice</option>
+                                    <option value="boolean">True / False</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="column col-md-12">
+                            <button type="submit" class="btn btn-info btn-lg" id="startButton">Start!</button>
+                        </div>
+
+                </form>
+            </div>
+        </main>
+
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p>Desarrollado por <a href="https://www.cesarguerra.mx/">César Guerra</a> (2020).
+            </div>
+        </footer>
+    </div>
+
+</html>

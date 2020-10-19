@@ -7,11 +7,11 @@ class Game {
         this._score = 0;
         this._currentQuestion = 0; //index
         this._currentAnswers = []; //Almacena lista de respuestas en orden aleatorio de la pregunta actual
-        this._QuizQuestionsNumber = quantity;
-        this._QuizCategoryId = catId; //from Form
-        this._QuizDifficulty = difficultyLevel; //from Form
-        this._QuizAnswersType = answersType; //from Form
-        this._Responses = []; //true si correcto, false si incorrecto
+        this._quizQuestionsNumber = quantity;
+        this._quizCategoryId = catId; //from Form
+        this._quizDifficulty = difficultyLevel; //from Form
+        this._quizAnswersType = answersType; //from Form
+        this._responses = []; //true si correcto, false si incorrecto
         this._quizContent = null; //Almacena la respuesta de la API
     }
 
@@ -40,12 +40,12 @@ class Game {
     }
 
     set response(answer){
-        this._Responses.push(answer);
+        this._responses.push(answer);
         this.score = answer;
     }
 
     nextQuestion() {
-        if (this._currentQuestion < this._QuizQuestionsNumber) {
+        if (this.currentQuestion < this._quizQuestionsNumber) {
             this.currentQuestion = this._currentQuestion + 1;
         }
     }
@@ -84,19 +84,18 @@ class Game {
     }
 
     continue(){
-        if (this.currentQuestion < this._QuizQuestionsNumber){
+        if (this.currentQuestion < this._quizQuestionsNumber){
             this.currentAnswers = this.quizContent[this._currentQuestion]; //Generate current answers Array
             console.log("Respuesta Correcta:", this.quizContent[this.currentQuestion].correct_answer);
             document.getElementById('mainContent').innerHTML="";
             let questionElement = document.getElementById('mainContent');
             let questionCard = new QuestionCard(this.currentQuestion, this.quizContent[this.currentQuestion].question, this.currentAnswers);
-            questionElement.innerHTML=questionCard.generate();
+            questionElement.innerHTML=questionCard.generate(); //Fill Page with new question
+
             document.getElementById("nextButton").addEventListener("click", function(){
                 event.preventDefault();
-                //let selectedAnswer = this.getSelectedOptionId();
-                //console.log("respuesta seleccionada",selectedAnswer);
                 this.checkAnswer();
-                console.log(this._Responses);
+                console.log(this._responses);
                 this.nextQuestion();
                 this.continue();
             }.bind(this)); //Uso Bind para poder traer el this del quiz dentro del Event Listener
@@ -110,7 +109,7 @@ class Game {
 
 
     init(){
-        const quiz = new Quiz(this._QuizQuestionsNumber, this._QuizCategoryId,this._QuizDifficulty,this._QuizAnswersType);
+        const quiz = new Quiz(this._quizQuestionsNumber, this._quizCategoryId,this._quizDifficulty,this._quizAnswersType);
         quiz.init()
             .then(() => {
                 if (quiz._QuestionsArray!== null) {

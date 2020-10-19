@@ -9,7 +9,7 @@ class QuestionCard{
         let options = "";
         this._answers.forEach((element,index) => {
             const html = `
-                <div class="form-check">
+                <div class="form-check mb-3">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="${index}" value="${element}">
                         <label class="form-check-label" for="${index}">
                             ${element}

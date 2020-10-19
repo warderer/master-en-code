@@ -3,7 +3,6 @@ class QuestionCard{
         this._number = number; //current question
         this._question = question;
         this._answers = answers; //array
-        console.log("questionCard",number,question,answers);
     }
 
     answersList(){

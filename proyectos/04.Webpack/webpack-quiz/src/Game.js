@@ -5,8 +5,8 @@ class Game {
     constructor(quantity, catId, difficultyLevel, answersType) {
         this._singleAnswerScore = 100; //config: puntaje de cada respuesta
         this._score = 0;
-        this._currentQuestion = 0;
-        this._currentAnswers = [];
+        this._currentQuestion = 0; //index
+        this._currentAnswers = []; //Almacena lista de respuestas en orden aleatorio de la pregunta actual
         this._QuizQuestionsNumber = quantity;
         this._QuizCategoryId = catId; //from Form
         this._QuizDifficulty = difficultyLevel; //from Form
@@ -61,20 +61,53 @@ class Game {
         this._currentAnswers = list.sort(() => Math.random() - 0.5);
     }
 
-    continue(){
-
-        this.currentAnswers = this.quizContent[this._currentQuestion];
-        document.getElementById('mainContent').innerHTML="";
-        let questionElement = document.getElementById('mainContent');
-        let questionCard = new QuestionCard(this.currentQuestion, this.quizContent[this.currentQuestion].question, this.currentAnswers);
-        questionElement.innerHTML=questionCard.generate();
-        this.nextQuestion();
-
-        document.getElementById("nextButton").addEventListener("click", function(){
-            event.preventDefault();
-            this.continue();
-        }.bind(this)); //Uso Bind para poder traer el this del quiz dentro del Event Listener
+    getSelectedOptionId() {
+        for (let index = 0; index < this.currentAnswers.length; index++) {
+            if (document.getElementById(index).checked === true){
+                return index;
+            }
+        }
     }
+
+    checkAnswer(){
+        const answer = this.getSelectedOptionId();
+        //if a response is selected
+        if (answer !== undefined) {
+            const selectedAnswer = this.currentAnswers[answer];
+            const correctAnswer = this.quizContent[this.currentQuestion].correct_answer;
+            selectedAnswer === correctAnswer ? this.response = true : this.response = false;
+        } else {
+            //no renponse selected
+            console.log("No Response Selected")
+            this.response = false;
+        }
+    }
+
+    continue(){
+        if (this.currentQuestion < this._QuizQuestionsNumber){
+            this.currentAnswers = this.quizContent[this._currentQuestion]; //Generate current answers Array
+            console.log("Respuesta Correcta:", this.quizContent[this.currentQuestion].correct_answer);
+            document.getElementById('mainContent').innerHTML="";
+            let questionElement = document.getElementById('mainContent');
+            let questionCard = new QuestionCard(this.currentQuestion, this.quizContent[this.currentQuestion].question, this.currentAnswers);
+            questionElement.innerHTML=questionCard.generate();
+            document.getElementById("nextButton").addEventListener("click", function(){
+                event.preventDefault();
+                //let selectedAnswer = this.getSelectedOptionId();
+                //console.log("respuesta seleccionada",selectedAnswer);
+                this.checkAnswer();
+                console.log(this._Responses);
+                this.nextQuestion();
+                this.continue();
+            }.bind(this)); //Uso Bind para poder traer el this del quiz dentro del Event Listener
+        } else this.showResults();
+    }
+
+    showResults(){
+        console.log("End of Game");
+        console.log("Score",this.score);
+    };
+
 
     init(){
         const quiz = new Quiz(this._QuizQuestionsNumber, this._QuizCategoryId,this._QuizDifficulty,this._QuizAnswersType);
@@ -82,30 +115,8 @@ class Game {
             .then(() => {
                 if (quiz._QuestionsArray!== null) {
                     window.$('.alert').hide();
-                    // console.log(quiz._QuestionsArray);
-                    // console.log('----');
-                    // //Test Sigle Question Pick
-                    // console.log(quiz._QuestionsArray.results[this._currentQuestion]);
-                    // this.currentAnswers = quiz._QuestionsArray.results[this._currentQuestion];
-                    // console.log(this._currentAnswers);
-                    // this.nextQuestion();
-                    // console.log('----');
-                    // console.log(quiz._QuestionsArray.results[this._currentQuestion]);
-                    // this.currentAnswers = quiz._QuestionsArray.results[this._currentQuestion];
-                    // console.log(this._currentAnswers);
-                    // //this.nextQuestion();
-                    // console.log('----');
-                    // //Set Score Simulation
-                    // this.response = true;
-                    // this.response = false;
-                    // this.response = true;
-                    // this.response = true;
-                    // console.log(this._Responses);
-                    // console.log(this._score);
-
                     this.quizContent = quiz._QuestionsArray.results;
                     this.continue();
-                    
                 } else {
                     window.$('.alert').show();
                     console.log("No existen preguntas en esa categoría, por favor selecciona otra");

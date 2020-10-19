@@ -1,5 +1,6 @@
 import Quiz from './Quiz';
 import QuestionCard from './components/QuestionCard';
+import generateResults from './components/results';
 
 class Game {
     constructor(quantity, catId, difficultyLevel, answersType) {
@@ -42,6 +43,10 @@ class Game {
     set response(answer){
         this._responses.push(answer);
         this.score = answer;
+    }
+
+    get responses(){
+        return this._responses;
     }
 
     nextQuestion() {
@@ -95,7 +100,7 @@ class Game {
             document.getElementById("nextButton").addEventListener("click", function(){
                 event.preventDefault();
                 this.checkAnswer();
-                console.log(this._responses);
+                console.log(this.responses);
                 this.nextQuestion();
                 this.continue();
             }.bind(this)); //Uso Bind para poder traer el this del quiz dentro del Event Listener
@@ -105,6 +110,12 @@ class Game {
     showResults(){
         console.log("End of Game");
         console.log("Score",this.score);
+        let summaryHTML = document.getElementById('mainContent');
+        const summary = generateResults(this.quizContent,this.responses,this.score);
+        summaryHTML.innerHTML=summary;
+        document.getElementById("tryAgainButton").addEventListener("click", function(){
+            location.reload();
+        });
     };
 
 

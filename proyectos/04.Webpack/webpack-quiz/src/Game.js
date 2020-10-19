@@ -116,6 +116,8 @@ class Game {
         document.getElementById("tryAgainButton").addEventListener("click", function(){
             location.reload();
         });
+        window.$('body').css('background', 'url(./images/background-results.png) no-repeat center center fixed');
+        window.$('body').css('background-size', 'cover');
     };
 
 

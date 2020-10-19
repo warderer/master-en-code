@@ -42,6 +42,9 @@ body {
     color: #fff;
     text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
     box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+    background: url(../images/background-results.png) no-repeat center center fixed;
+    background: url(../images/background.png) no-repeat center center fixed;
+    background-size: cover;
 }
 
 .cover-container {
@@ -98,11 +101,11 @@ body {
  */
 .cover {
     padding: 0 1.5rem;
-}
 
-.cover .btn-lg {
-    padding: .75rem 1.25rem;
-    font-weight: 700;
+    .btn-lg {
+        padding: .75rem 1.25rem;
+        font-weight: 700;
+    }
 }
 
 

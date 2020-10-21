@@ -17,7 +17,18 @@ class App extends React.Component {
     return (
       <div className="App">
         <SearchBar />
-        <ImageCard />
+        <div className="grid-cards">
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+          <ImageCard />
+        </div>
       </div>
     );
   };

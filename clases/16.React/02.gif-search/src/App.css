@@ -1,3 +1,5 @@
+
+
 .App {
   background-color: #282c34;
   min-height: 100vh;
@@ -46,4 +48,16 @@
 
 .search-button:focus {
   outline: none;
+}
+
+.grid-cards{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-container{
+  width: 30%;
+  margin-bottom:45px;
 }

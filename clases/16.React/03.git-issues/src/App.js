@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import axios from 'axios';
+import SearchBar from './components/SearchBar';
+import IssueItem from './components/IssueItem';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+class App extends React.Component {
+
+  state = {
+    results: []
+  }
+
+  sendSearch = (search) => {
+    //console.log(this.state.results.map(filteredIssue => ((filteredIssue))))
+    console.log( this.state.results.filter(query => query.title.includes(search)))
+    this.setState({results: 
+    this.state.results
+      .filter(query => query.title.includes(search))
+
+    });
+    //console.log(this.results);
+  }
+
+  getData = () => {
+    axios.get(`https://api.github.com/repos/facebook/react/issues`)
+    .then((response) => {
+        console.log(response.data);
+        this.setState({results: response.data});
+    }).catch((err) => {
+        console.log(err);
+    });
+  }
+
+  componentDidMount(){
+    this.getData();
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <SearchBar emitSearch={this.sendSearch} />
+
+        <div className="grid-cards">
+        {
+        this.state.results.map ( issue => (<IssueItem url={issue} />))
+        }
+        </div>
+      </div>
+    );
+  };
+};
 
 export default App;

@@ -7,25 +7,22 @@ import IssueItem from './components/IssueItem';
 class App extends React.Component {
 
   state = {
-    results: []
+    apiResults: [],
+    searchResults : []
   }
 
   sendSearch = (search) => {
-    //console.log(this.state.results.map(filteredIssue => ((filteredIssue))))
-    console.log( this.state.results.filter(query => query.title.includes(search)))
-    this.setState({results: 
-    this.state.results
-      .filter(query => query.title.includes(search))
-
-    });
-    //console.log(this.results);
+    console.log( this.state.apiResults.filter(query => query.title.includes(search)))
+    const newSearch = this.state.apiResults.filter(query => query.title.toLowerCase().includes(search.toLowerCase()))
+    this.setState({searchResults: newSearch});
   }
 
   getData = () => {
     axios.get(`https://api.github.com/repos/facebook/react/issues`)
     .then((response) => {
         console.log(response.data);
-        this.setState({results: response.data});
+        this.setState({apiResults: response.data});
+        this.setState({searchResults: response.data});
     }).catch((err) => {
         console.log(err);
     });
@@ -42,7 +39,7 @@ class App extends React.Component {
 
         <div className="grid-cards">
         {
-        this.state.results.map ( issue => (<IssueItem url={issue} />))
+          this.state.searchResults.map ( issue => (<IssueItem url={issue} />))
         }
         </div>
       </div>

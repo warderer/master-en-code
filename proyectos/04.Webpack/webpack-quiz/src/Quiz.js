@@ -25,7 +25,7 @@ class Quiz {
             .then((questionList) => {
                 this._QuestionsArray = questionList;
             })
-            .catch((err) => {
+            .catch((error) => {
                 console.log("Error:",error);
                 return error;
             });

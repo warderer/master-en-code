@@ -97,13 +97,13 @@ class Game {
             let questionCard = new QuestionCard(this.currentQuestion, this.quizContent[this.currentQuestion].question, this.currentAnswers);
             questionElement.innerHTML=questionCard.generate(); //Fill Page with new question
 
-            document.getElementById("nextButton").addEventListener("click", function(){
+            document.getElementById("nextButton").addEventListener("click", ()=>{
                 event.preventDefault();
                 this.checkAnswer();
                 console.log(this.responses);
                 this.nextQuestion();
                 this.continue();
-            }.bind(this)); //Uso Bind para poder traer el this del quiz dentro del Event Listener
+            });
         } else this.showResults();
     }
 

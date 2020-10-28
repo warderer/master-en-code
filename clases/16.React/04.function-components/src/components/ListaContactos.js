@@ -1,22 +1,14 @@
-import React, {useState} from 'react';
-import FormularioContactos from './FormularioContactos'
+import React from 'react';
 
-function ListaContactos () {
-
-    const [contactos, setContactos] = useState([
-        {name: 'Mario', lastName: 'Bros'},
-        {name: 'Luigi', lastName: 'Bros'}
-    ]);
-
+function ListaContactos({lista}){
     const renderContactos = () => {
-        return (contactos.map((contacto)=> <p>{contacto.name}</p>))
+        return (lista.map((contacto)=> <p>{contacto.name}</p>))
         // [<h1>Mario</h1>, <h1>Luigi</h1>]
     }
 
     return (
         <div>
             <h1>Esta es la lista de contactos</h1>
-            <FormularioContactos />
             {renderContactos()}
         </div>
     )

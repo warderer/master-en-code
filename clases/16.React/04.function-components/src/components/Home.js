@@ -10,10 +10,24 @@ function Home () {
         {name: 'Luigi', lastName: 'Bros'}
     ]);
 
+    const addContacto = (name, lastName) => {
+        console.log('El contacto que vamos a agregar es',name,lastName);
+        //1.- Crear el objeto contacto
+        const objContacto = {
+            id: contactos.length + 1,
+            name: name,
+            lastName: lastName,
+        }
+
+        //2.- Se actualiza el estado con la nuevo arreglo de objetos
+        setContactos([...contactos, objContacto]);
+
+    }
+
     return (
         <div>
             {/*<Counter />*/}
-            <FormularioContactos />
+            <FormularioContactos agregarContacto={addContacto}/>
             <ListaContactos lista={contactos}/>
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 
 function ListaContactos({lista}){
     const renderContactos = () => {
-        return (lista.map((contacto)=> <p>{contacto.name}</p>))
+        return (lista.map((contacto)=> <p>{contacto.name} {contacto.lastName}</p>))
         // [<h1>Mario</h1>, <h1>Luigi</h1>]
     }
 

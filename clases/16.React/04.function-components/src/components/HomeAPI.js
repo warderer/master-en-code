@@ -17,9 +17,10 @@ function HomeAPI(){
     const getApiData = () => {
         axios.get(apiUri)
         .then((result) => {
-            const contactos = result.data.map((entry, index)=>{
-                return {id: index, name: entry.name, lastName: entry.last_name}
-            })
+            const contactos = result.data.map((entry)=>{
+                return {id: entry.id, name: entry.name, lastName: entry.last_name}
+            }).sort((a, b) => {return a.id - b.id;});
+
             setContactos(contactos);
             console.log(contactos);
         }).catch((err) => {

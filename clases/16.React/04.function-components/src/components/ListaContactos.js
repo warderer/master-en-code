@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function ListaContactos({lista}){
     const renderContactos = () => {
-        return (lista.map((contacto)=> <p>{contacto.name} {contacto.lastName}</p>))
+        return (lista.map((contacto,index)=> <p key={index}>{contacto.name} {contacto.lastName}</p>))
         // [<h1>Mario</h1>, <h1>Luigi</h1>]
     }
 
@@ -14,8 +15,14 @@ function ListaContactos({lista}){
     )
 }
 
+ListaContactos.propTypes = {
+    lista: PropTypes.array
+}
+
 export default ListaContactos;
 
 
 // Hacer un function component con un pequeño formulario solo el maqueado para agregar un conatcto
 //Y mandarlo a llamar  en el Home
+
+

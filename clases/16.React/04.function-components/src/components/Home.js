@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
+import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 /*import Counter from './Counter';*/
 import FormularioContactos from './FormularioContactos';
 import ListaContactos from './ListaContactos';
 
-function Home () {
+function Home ({saludo}) {
 
     const [contactos, setContactos] = useState([]);
 
@@ -34,12 +35,17 @@ function Home () {
 
     return (
         <div>
+            {saludo}
             {/*<Counter />*/}
             <FormularioContactos agregarContacto={addContacto}/>
             {contactos.length === 0 ? <h2>Cargando Contactos</h2> : <ListaContactos lista={contactos}/>}
             <Link to="/about">Vamonos al about</Link>
         </div>
     )
+}
+
+Home.propTypes = {
+    saludo: PropTypes.string
 }
 
 export default Home

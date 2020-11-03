@@ -1,12 +1,11 @@
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
-import HomeAPI from './components/HomeAPI';
 import Home from './components/Home';
 import About from './components/About';
 import Individual from './components/Individual';

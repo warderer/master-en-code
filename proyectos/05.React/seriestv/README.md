@@ -1,3 +1,18 @@
+
+# Consumir https://www.tvmaze.com/api
+## Y hacer un buscador de series.
+
+La primera pantalla debe de preguntar que serie quieres buscar, una vez escrito en el input el buscador debe de dar los posibles resultados listados.
+Cuando selecciones una serie debe de existir un link único /serie/:idSerie
+
+Primera sección: Mostrar información general de la serie, foto, resumen, etc
+Segunda sección: Debe de mostrar todos los episodios divididos por temporadas.
+Tercera  sección: Debe de mostrar los personajes y nombre de actores (Con foto)
+
+Usar eslint y proptypes
+
+Puedes darte una idea en https://www.tvmaze.com/  no tiene que ser igual pero la idea es mostrar la información.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

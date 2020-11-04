@@ -23,7 +23,7 @@ function Home () {
         console.log("Ejecución de Use Effect");
         setSearchQuery('Robot');
         getApiData(searchQuery);
-        console.log(showList);
+        //console.log(showList);
     },[]);
 
     return(

@@ -6,9 +6,10 @@ import {
   Link
 } from "react-router-dom";
 
-import HomeAPI from './components/HomeAPI'
-import Home from './components/Home'
-import About from './components/About'
+import HomeAPI from './components/HomeAPI';
+import Home from './components/Home';
+import About from './components/About';
+import Individual from './components/Individual';
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
 
         <Route path="/about">
           <About />
+        </Route>
+
+        <Route exact path="/author/:idAuthor">
+          <Individual />
         </Route>
 
         <Route path="/">

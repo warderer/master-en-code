@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import ShowsList from './ShowsList';
+import Header from './Header';
 
 function Home () {
     const UriSearch ='http://api.tvmaze.com/search/shows?q=';
@@ -27,6 +28,7 @@ function Home () {
 
     return(
         <div>
+            <Header updateData={getApiData}/>
             <h1>Shows</h1>
             {showList.length === 0 ? <h2>Cargando Shows</h2> : <ShowsList shows={showList} />}
             

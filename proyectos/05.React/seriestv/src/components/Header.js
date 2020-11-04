@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
+import propTypes from 'prop-types'
 
-function Header () {
+function Header ({updateData}) {
     const [showName, setShowName] = useState('');
 
     const onSearchShow = (e) => {
         e.preventDefault();
-        console.log('Le dieron submit');
-        //agregarContacto(name,lastName);
+        console.log('Buscaron:',showName);
+        updateData(showName);
     }
 
     return (
@@ -20,6 +21,10 @@ function Header () {
             </form>            
         </div>
     )
+}
+
+Header.propTypes = {
+    updateData: propTypes.func
 }
 
 export default Header;

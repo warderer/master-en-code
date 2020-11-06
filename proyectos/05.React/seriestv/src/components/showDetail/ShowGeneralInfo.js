@@ -10,11 +10,11 @@ function ShowGeneralInfo({showData}) {
                 __html: showData.summary
             }}/>
             <p>Genres: {showData.genres.map((genre, index)=><span key={index}>{genre} </span>)}</p>
-            <span>Runtime: {showData.runtime} </span>
-            <span>Premiered: {showData.premiered} </span>
-            <span>Rating: {showData.rating.average} </span>
-            <span>Status: {showData.status} </span>
-            <span>Language: {showData.language}</span>
+            <span className="App-link"> Runtime:</span> {showData.runtime } 
+            <span className="App-link"> Premiered:</span> {showData.premiered} 
+            <span className="App-link"> Rating:</span> {showData.rating.average} 
+            <span className="App-link"> Status:</span> {showData.status} 
+            <span className="App-link"> Language:</span> {showData.language}
         </div>
     )
 }

@@ -4,8 +4,10 @@ function ApiRequest(ApiUri, query, setFunc) {
         axios.get(ApiUri+query)
         .then((result)=>{
             console.log(result);
-            setFunc(result.data);
-            return true;
+            if (result.status === 200) {
+                setFunc(result.data);
+                return true;
+            }
         })
         .catch((err)=>{
             console.log(err);

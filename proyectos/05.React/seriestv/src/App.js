@@ -11,19 +11,21 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Switch>
+      <div className="App-header">
+        <Router>
+          <Switch>
 
-          <Route exact path="/show/:idShow">
-            <SingleShowView />
-          </Route>
+            <Route exact path="/show/:idShow">
+              <SingleShowView />
+            </Route>
 
-          <Route exact path="/">
-            <Home />
-          </Route>
+            <Route exact path="/">
+              <Home />
+            </Route>
 
-        </Switch>
-      </Router>
+          </Switch>
+        </Router>
+      </div>
     </div>
   );
 }

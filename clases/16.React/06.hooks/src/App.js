@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.scss';
 import useForm from './hook/useForm';
 
@@ -8,12 +8,32 @@ function App() {
   //const [apellido, setApellidos] = useState['']
   //const [email, setEmail] = useState['']
 
+  const [datos, setDatos] = useState({});
+
+  useEffect( ()=>{
+    //Simulando llamada a la API
+    setTimeout(()=>{
+      const info = { // JSON que manda el backend
+        "nombre": "Edwin",
+        "apellidos": "Salgado",
+        "edad": 27,
+        "genero": "H",
+        "email": 'lsalgadof93@gmail.com',
+        "password": "perritobonito"
+      }
+      setDatos(info)
+    },1000)
+    
+  },[])
+
+  console.log("Este es el valor de la API",datos);
+
   const sendData = (data) => {
     //Aca mandamos la info a la API
     console.log("Esta es mi data final-->",data);
   }
 
-  const {inputs, handleInputChange, handleSubmit} = useForm(sendData);
+  const {inputs, handleInputChange, handleSubmit} = useForm(sendData, datos);
 
   return (
     <div className="App">

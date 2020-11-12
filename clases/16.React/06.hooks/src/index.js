@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 //import App from './App';
 //import Counter from './Counter';
-import Input from './hook/Input';
+//import Input from './Input';
+import Message from './Message';
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Input />
+    <Message />
   </React.StrictMode>,
   document.getElementById('root')
 );

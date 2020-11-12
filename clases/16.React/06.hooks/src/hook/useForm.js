@@ -5,7 +5,7 @@
 // 3. Tienes que utilizar Hooks de React, y no deben contener loops, condiciones o funciones anidadas.
 // LOS HOOKS TIENEN QUE SER UNIVERSALES
 
-import React, { useState, useEffect } from 'react'; //cumplo con 3. usar hooks de react
+import { useState, useEffect } from 'react'; //cumplo con 3. usar hooks de react
 
 function useForm(callback, defaults){
     const [inputs, setInputs] = useState(defaults) // aqui voy a estar guardando los valores de mis formularios.

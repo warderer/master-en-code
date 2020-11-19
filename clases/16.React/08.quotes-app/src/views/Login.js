@@ -11,6 +11,9 @@ function Login() {
         axios.post("http://ca35951931f4.ngrok.io/login", data)
             .then((response)=>{
                 console.log(response.data);
+                //session.storage: Se guarda hasta que se cierra la pestaña
+                //local.storage: Se almacena aunque se cierre el navegador
+                window.localStorage.setItem("token", response.data.token) //esto agrega algo nuevo a local Storage
                 history.push('/');
             })
             .catch((error)=>{

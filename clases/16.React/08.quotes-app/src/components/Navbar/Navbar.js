@@ -1,12 +1,13 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import './Navbar.scss';
 
 function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <Link className="navbar-brand" to="/">
         Quotes App
-      </a>
+      </Link>
       <button
         className="navbar-toggler"
         type="button"
@@ -21,14 +22,14 @@ function Navbar() {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/login">
               Login
-            </a>
+            </Link>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <Link className="nav-link" to="/signup">
               Signup
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

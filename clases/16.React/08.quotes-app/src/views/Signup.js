@@ -1,10 +1,30 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import useForm from '../hooks/useForm';
+import axios from 'axios';
 
 function Signup () {
-
+    let history = useHistory();
     const sendData = (data) => {
+        if (data.password === data.password_confirm){
+            delete data.password_conform;
+            axios.post("http://ca35951931f4.ngrok.io/signup", data)
+                .then((response) => {
+                    if(response.status === 201) {
+                        //Cuando se crea el usuario, lo regresamos al Login
+                        console.log(response.status);
+                        history.push('/');
+                        
+                    }
+                })
+                .catch((error)=>{
+                    alert(error.response.data);
+                })
+        } else {
+            alert("Password no coinciden");
+        }
+        
         console.log(data)
     }
 

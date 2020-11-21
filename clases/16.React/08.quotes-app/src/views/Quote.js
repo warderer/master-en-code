@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
+import protect from '../utils/protect';
 
 function Quote(){
 
@@ -38,4 +39,4 @@ function Quote(){
 
 }
 
-export default Quote;
+export default protect(Quote);

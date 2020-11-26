@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // IMPORTANDO PROPS
 // function Home(props){
@@ -20,6 +21,11 @@ function Home({saludo, nombre}){
     <p>{saludo} {nombre}</p>
         </React.Fragment>
     );
+}
+
+Home.propTypes = {
+    saludo: PropTypes.string,
+    nombre: PropTypes.string
 }
 
 export default Home;

@@ -1,12 +1,18 @@
+import React from 'react';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
+<<<<<<< HEAD
   Link
 } from "react-router-dom";
 
 import HomeAPI from './components/HomeAPI';
+=======
+} from "react-router-dom";
+
+>>>>>>> 147e1f9e657104e13f3fee1f4b67822c18f20d34
 import Home from './components/Home';
 import About from './components/About';
 import Individual from './components/Individual';

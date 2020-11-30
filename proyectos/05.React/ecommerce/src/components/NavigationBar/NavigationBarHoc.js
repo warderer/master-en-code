@@ -1,0 +1,36 @@
+import React from 'react';
+
+export default (Navbar) => function Navbarhoc(){
+    return (
+        <Navbar
+            brandName="KiverShop"
+            menuItems=
+                {[
+                    "Books",
+                    "Movies",
+                    "Music",
+                    "Games",
+                    "Electronics",
+                    "Computers",
+                    "Home",
+                    "Garden",
+                    "Tools",
+                    "Grocery",
+                    "Health",
+                    "Beauty",
+                    "Toys",
+                    "Kids",
+                    "Baby",
+                    "Clothing",
+                    "Shoes",
+                    "Jewelery",
+                    "Sports",
+                    "Outdoors",
+                    "Automotive",
+                    "Industrial"
+                ]}
+            customerName="Identificate"
+            customerAddress="Elige tu dirección"
+            cartItems={0}
+        />)
+}

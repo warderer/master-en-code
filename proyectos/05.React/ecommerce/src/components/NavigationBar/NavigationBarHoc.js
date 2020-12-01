@@ -29,6 +29,7 @@ export default (Navbar) => function Navbarhoc(){
                     "Automotive",
                     "Industrial"
                 ]}
+            menuItemsShowLimit={6}
             customerName="Identificate"
             customerAddress="Elige tu dirección"
             cartItems={0}

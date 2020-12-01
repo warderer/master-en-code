@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Col } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import './navigationbar.scss';
 
-function NavigationBar({ brandName, menuItems, customerName, customerAddress, cartItems }) {
+function NavigationBar({ brandName, menuItems, menuItemsShowLimit, customerName, customerAddress, cartItems }) {
   return (
     <React.Fragment>
       <Navbar bg="light" expand="lg" className="d-flex justify-content-between">
@@ -31,18 +32,13 @@ function NavigationBar({ brandName, menuItems, customerName, customerAddress, ca
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            {menuItems?.slice(0,5).map((item, index) => <LinkContainer to={"category?"+item} key={index}><Nav.Link>{item}</Nav.Link></LinkContainer>)}
+            {menuItems?.slice(0,menuItemsShowLimit).map((item, index) => <LinkContainer to={"category?"+item} key={index}><Nav.Link>{item}</Nav.Link></LinkContainer>)}
             <NavDropdown title="Ver más" id="basic-nav-dropdown">
-              {menuItems?.slice(5).map((item, index) => <LinkContainer to={"category?"+item} key={index}><Nav.Link>{item}</Nav.Link></LinkContainer>)}
+              {menuItems?.slice(menuItemsShowLimit).map((item, index) => <LinkContainer to={"category?"+item} key={index}><Nav.Link>{item}</Nav.Link></LinkContainer>)}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-
-
-
-
-
     </React.Fragment>
   )
 }
@@ -50,6 +46,7 @@ function NavigationBar({ brandName, menuItems, customerName, customerAddress, ca
 NavigationBar.propTypes = {
   brandName: PropTypes.string,
   menuItems: PropTypes.arrayOf(PropTypes.string),
+  menuItemsShowLimit: PropTypes.number,
   customerName: PropTypes.string,
   customerAddress: PropTypes.string,
   cartItems: PropTypes.number

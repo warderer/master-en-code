@@ -30,8 +30,8 @@ export default (Navbar) => function Navbarhoc(){
                     "Industrial"
                 ]}
             menuItemsShowLimit={6}
-            customerName="Identificate"
-            customerAddress="Elige tu dirección"
+            customerName="Sign in"
+            customerAddress="Choose your address"
             cartItems={0}
         />)
 }

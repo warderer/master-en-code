@@ -1,21 +1,45 @@
 import React from 'react';
-import NavigationBar from '../../components/NavigationBar';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import NavigationBar from '../../components/NavigationBar';
 import useForm from '../../hooks/useForm';
 
-function Login({sendData}) {
+function SignUp ({sendData}) {
 
     const { inputs, handleInputChange, handleSubmit } = useForm(sendData,{});
 
-    return (
+    return(
         <React.Fragment>
             <NavigationBar />
-            <h1>Login Page</h1>
+            <h1>SignUp Page</h1>
 
             <form onSubmit={handleSubmit}>
                 <div className="cointainer">
                     <div className="row justifiy-content-center">
+
+                        <div className="col-md-10">
+                            <div className="form-group">
+                                <label htmlFor="">First Name</label>
+                                <input type="text"
+                                    name="first_name"
+                                    className="form-control"
+                                    value={inputs.first_name || ""}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="col-md-10">
+                            <div className="form-group">
+                                <label htmlFor="">Last Name</label>
+                                <input type="text"
+                                    name="last_name"
+                                    className="form-control"
+                                    value={inputs.last_name || ""}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                        </div>
+
                         <div className="col-md-10">
                             <div className="form-group">
                                 <label htmlFor="">Email</label>
@@ -44,10 +68,6 @@ function Login({sendData}) {
                             <button type="submit" className="btn btn-dark">Enviar</button>
                         </div>
 
-                        <div className="col-md-10 text-center pt-4">
-                            <p>New Customer?. <Link to="/signup">Start Here</Link></p>
-                        </div>
-
                     </div>
                 </div>
 
@@ -56,8 +76,8 @@ function Login({sendData}) {
     )
 }
 
-Login.propTypes = {
+SignUp.propTypes = {
     sendData: PropTypes.func
 }
 
-export default Login;
+export default SignUp;

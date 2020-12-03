@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Col } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
+import {Link} from 'react-router-dom';
 import './navigationbar.scss';
 
 function NavigationBar({ brandName, menuItems, menuItemsShowLimit, customerName, customerAddress, cartItems }) {
@@ -11,7 +12,7 @@ function NavigationBar({ brandName, menuItems, menuItemsShowLimit, customerName,
         <LinkContainer to="/">
           <Navbar.Brand>{brandName}</Navbar.Brand>
         </LinkContainer>
-        <Container className="col-8">
+        <Container className="col-8 m-0">
         <Form className="w-100">
           <Form.Row>
             <Col className="col-10">
@@ -23,12 +24,20 @@ function NavigationBar({ brandName, menuItems, menuItemsShowLimit, customerName,
           </Form.Row>
         </Form>
         </Container>
-        <span>Hola, {customerName}</span>
-        <span>En Carrito: {cartItems}</span>
+        <Container className="col-1 m-0 p-0" >
+        <span>
+          <Link to="/login">Hi,<br /> {customerName}</Link>
+        </span>
+        </Container>
+        <Container className="col-1 m-0 p-0" >
+        <span>
+        <Link to="/shoppingCart">Cart Items:<br /> {cartItems}</Link>
+        </span>
+        </Container>
       </Navbar>
 
       <Navbar bg="light" expand="lg" justify-content-center="true">
-        <span>Envio: {customerAddress}</span>
+        <span>Ship: {customerAddress}</span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

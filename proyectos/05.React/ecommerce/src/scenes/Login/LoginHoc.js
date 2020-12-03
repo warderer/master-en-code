@@ -7,9 +7,11 @@ export default (Login) => function LoginHoc(){
     const sendData = (data) => {
         axios.post("https://ecomerce-master.herokuapp.com/api/v1/login", data)
             .then((response)=>{
-                console.log(response.data);
-                window.localStorage.setItem("token", response.data.token);
-                history.push('/');
+                if (response.status === 200){
+                    console.log(response.data);
+                    window.localStorage.setItem("token", response.data.token);
+                    history.push('/');
+                }
             })
             .catch((error)=>{
                 alert(error.response.data.message);

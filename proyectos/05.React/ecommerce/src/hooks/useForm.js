@@ -17,11 +17,11 @@ function useForm(callback, defaults){
         callback(inputs);
     }
     const handleInputChange = (event) =>{
-        console.log(event.target)
+        //console.log(event.target)
         //const name = event.targe.name
         //const value = event.target.value
         const {name,value} = event.target;
-        console.log(name,value)
+        //console.log(name,value)
         setInputs({...inputs, [name]:value})
     }
     return { // Los hooks no regresan jsx

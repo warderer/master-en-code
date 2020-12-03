@@ -18,14 +18,14 @@ function SingleProductCard({
                 <div className="productCardContent">
                     <div className="productCardImage">
                         <img src={image} alt="" />
-                        <Link to={"/product?"+id} className="imageCardEffect">
+                        <Link to={"/product/"+id} className="imageCardEffect">
                             Product
                         </Link>
                     </div>
                     <div className="productCardDetails">
                         <div className="productCardModel">
                             <span className="modelCardEffect"></span>
-                            <Link to={"/product?"+id}>
+                            <Link to={"/product/"+id}>
                                 {productName}
                                 <span>Price: $ {price}</span>
                             </Link>
@@ -46,7 +46,7 @@ function SingleProductCard({
                             </div>
                         </div>
                         <div className="productCardPrice">
-                            <Link to={"/product?"+id} className="btn">
+                            <Link to={"/product/"+id} className="btn">
                                 <i className="fa fa-info"></i> More Details
                             </Link>
                             <button className="btn addToCart">

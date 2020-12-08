@@ -1,28 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react';
+import { SongProvider } from './SongContext';
 import './App.css';
 import SongList from './SongList';
 import SongDetails from './SongDetails';
-import canciones from './listaCanciones.json';
 
 function App() {
-  const[list, setList] = useState([]);
-
-  useEffect(()=>{
-      setTimeout(()=>{
-          setList(canciones);
-      },2000)
-  },[])
 
   return (
     <div className="App">
-        <div className="izquierdo">
-          <h2>Lado Izquierdo</h2>
-          <SongList listaDeCanciones={list}/>
-        </div>
-        <div className="derecho">
-          <h2>Lado derecho</h2>
-          <SongDetails />
-        </div>
+        <SongProvider>
+          <div className="izquierdo">
+            <h2>Lado Izquierdo</h2>
+            <SongList listaDeCanciones={[]}/>
+          </div>
+          <div className="derecho">
+            <h2>Lado derecho</h2>
+            <SongDetails />
+          </div>
+        </SongProvider>
     </div>
 
 

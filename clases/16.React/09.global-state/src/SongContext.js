@@ -4,6 +4,7 @@ import canciones from './listaCanciones.json';
 // Creación del contexto vacio.
 const SongContext = React.createContext();
 
+
 // Context necesita 2 cosas para funcionar:
 // El proveedor de datos
 // El consumidor de datos
@@ -11,6 +12,7 @@ const SongContext = React.createContext();
 // Creación de proveedor del contexto
 function SongProvider(props){
     const[list, setList] = useState([]);
+    const [selectedSong, setSelectedSong] = useState({});
 
     useEffect(()=>{
         setTimeout(()=>{
@@ -20,7 +22,9 @@ function SongProvider(props){
 
     // Tenemos que indicar al Provider que datos debe Proveer.
     const value = {
-        list // dato publico para todos los componentes.
+        list, // dato publico para todos los componentes.
+        selectedSong,
+        setSelectedSong
     }
 
     return (

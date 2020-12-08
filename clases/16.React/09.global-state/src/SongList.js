@@ -13,7 +13,9 @@ function SongList(){
             context.list.length === 0
                 ? <h1>Cargando...</h1>
                 : context.list.map((song)=> (
-                    <div className="row-song">
+                    <div className="row-song" onClick={() => {
+                        context.setSelectedSong(song);
+                    }}>
                         <h4>{song.title}</h4>
                         <h5>{song.artist}</h5>
                     </div>

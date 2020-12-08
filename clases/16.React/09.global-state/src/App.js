@@ -11,7 +11,7 @@ function App() {
         <SongProvider>
           <div className="izquierdo">
             <h2>Lado Izquierdo</h2>
-            <SongList listaDeCanciones={[]}/>
+            <SongList />
           </div>
           <div className="derecho">
             <h2>Lado derecho</h2>

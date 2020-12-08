@@ -1,14 +1,18 @@
 import React from 'react';
+import { useSongContext } from './SongContext';
 
-function SongList({listaDeCanciones}){
+function SongList(){
     //Debe crear una lista de canciones
+
+    const context = useSongContext();
+    console.log(context);
 
     return (
         <section>
             {
-            listaDeCanciones.length === 0
+            context.list.length === 0
                 ? <h1>Cargando...</h1>
-                : listaDeCanciones.map((song)=> (
+                : context.list.map((song)=> (
                     <div className="row-song">
                         <h4>{song.title}</h4>
                         <h5>{song.artist}</h5>

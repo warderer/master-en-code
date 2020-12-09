@@ -23,6 +23,7 @@ function SongProvider(props){
     // Tenemos que indicar al Provider que datos debe Proveer.
     const value = {
         list, // dato publico para todos los componentes.
+        setList,
         selectedSong,
         setSelectedSong
     }

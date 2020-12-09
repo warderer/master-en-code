@@ -20,10 +20,15 @@ function SongProvider(props){
         },2000)
     },[])
 
+    const deleteSong = (title) => {
+        const newList = list.filter((song) => song.title !== title);
+        setList(newList);
+        setSelectedSong({});
+    }
     // Tenemos que indicar al Provider que datos debe Proveer.
     const value = {
         list, // dato publico para todos los componentes.
-        setList,
+        deleteSong,
         selectedSong,
         setSelectedSong
     }

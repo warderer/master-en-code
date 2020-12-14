@@ -1,9 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Home from '../scenes/Home';
-import Login from '../scenes/Login';
-import SignUp from '../scenes/SignUp';
-import Product from '../scenes/Product';
+import { Home, Login, SignUp, Product } from '../scenes';
 
 function Routes(){
     return(

@@ -6,8 +6,13 @@ export default (Product) => function ProductHoc(){
     const params = useParams();
     const [singleProduct, setSingleProduct] = useState({});
 
+    const fetchProduct = async () =>{
+        const data = await itemsApi.getOneItem(params.idProduct);
+        setSingleProduct(data);
+    }
+
     useEffect(() => {
-        itemsApi.itemsApi.getOneItem(params.idProduct,setSingleProduct);
+        fetchProduct();
     }, [])
 
     return(

@@ -1,3 +1,3 @@
-import * as itemsApi from './items'
+import * as itemsApi from './items';
 
-export default { itemsApi }
+export default itemsApi;

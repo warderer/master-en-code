@@ -6,9 +6,14 @@ import SingleProductCard from '../../components/SingleProductCard';
 function Home() {
     const [products, setProducts] = useState([]);
 
+    const fetchProducts = async () =>{
+        const data = await itemsApi.getAllItems();
+        setProducts(data);
+    }
+
     useEffect(() => {
-        itemsApi.itemsApi.getAllItems(setProducts);
-    }, [products])
+        fetchProducts();
+    }, [])
 
     return (
         <div>

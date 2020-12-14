@@ -25,7 +25,7 @@ function Home() {
                 </div>
             </div>
             <div className="d-flex justify-content-center flex-wrap align-items-stretch">
-                {products.length === 0 ? <h2>Cargando Productos</h2> : products.map((item, index) => <SingleProductCard key={index} product={item} />)}
+                {products?.length === 0 ? <h2>Cargando Productos</h2> : products?.map((item, index) => <SingleProductCard key={index} product={item} />)}
             </div>
         </div>
     )

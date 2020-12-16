@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Col } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, Col, Badge } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import {Link} from 'react-router-dom';
 import './navigationbar.scss';
@@ -16,28 +16,32 @@ function NavigationBar({ brandName, menuItems, menuItemsShowLimit, customerName,
         <Form className="w-100">
           <Form.Row>
             <Col className="col-10">
-            <FormControl type="text" placeholder="Search" size="lg" className="mr-2"/>
+              <FormControl type="text" placeholder="Search" size="lg" className="mr-2"/>
             </Col>
             <Col className="col-2">
-              <Button variant="outline-success" size="lg">Search</Button>
+              <Button variant="primary" size="lg">Search</Button>
             </Col>
           </Form.Row>
         </Form>
         </Container>
         <Container className="col-1 m-0 p-0" >
-        <span>
-          <Link to="/login">Hi,<br /> {customerName}</Link>
-        </span>
+          <span className="w-100">
+            Hi,<br />
+            <Link to="/login"> {customerName}</Link>
+          </span>
         </Container>
         <Container className="col-1 m-0 p-0" >
-        <span>
-        <Link to="/shoppingCart">Cart Items:<br /> {cartItems}</Link>
-        </span>
+          <span className="w-100">
+            <Link to="/shoppingCart" className="w-100">
+              <i className="fa fa-shopping-cart mr-1"></i> Cart
+              <Badge variant="primary" className="ml-1">{cartItems}</Badge>
+            </Link>
+          </span>
         </Container>
       </Navbar>
 
       <Navbar bg="light" expand="lg" justify-content-center="true">
-        <span>Ship: {customerAddress}</span>
+        <span className="pr-5">Ship: {customerAddress}</span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

@@ -1,5 +1,4 @@
 import React from 'react';
-import NavigationBar from '../../components/NavigationBar';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
@@ -10,7 +9,6 @@ function Login({sendData}) {
 
     return (
         <React.Fragment>
-            <NavigationBar />
             <h1>Login Page</h1>
 
             <form onSubmit={handleSubmit}>

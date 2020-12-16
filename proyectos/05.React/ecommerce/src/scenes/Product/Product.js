@@ -3,12 +3,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './product.scss';
-import NavigationBar from '../../components/NavigationBar';
 
 function Product({id, productName, description, price, category, brand, image, sku, createdAt, editedAt, isActive}) {
     return (
         <React.Fragment>
-            <NavigationBar />
             <div className="container">
                 <div className="card">
                     <div className="row">

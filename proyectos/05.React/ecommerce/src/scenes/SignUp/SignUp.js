@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NavigationBar from '../../components/NavigationBar';
 import useForm from '../../hooks/useForm';
 
 function SignUp ({sendData}) {
@@ -9,7 +8,6 @@ function SignUp ({sendData}) {
 
     return(
         <React.Fragment>
-            <NavigationBar />
             <h1>SignUp Page</h1>
 
             <form onSubmit={handleSubmit}>

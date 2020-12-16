@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import itemsApi from '../../services/api';
-import NavigationBar from '../../components/NavigationBar';
 import SingleProductCard from '../../components/SingleProductCard';
 
 function Home() {
@@ -17,7 +16,6 @@ function Home() {
 
     return (
         <div>
-            <NavigationBar />
             <div className="jumbotron jumbotron-fluid">
                 <div className="container">
                     <h1 className="display-4">X-MAS DISCOUNTS</h1>

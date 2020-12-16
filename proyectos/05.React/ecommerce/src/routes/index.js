@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Home, Login, SignUp, Product } from '../scenes';
+import { Home, Login, SignUp, Product, Error404 } from '../scenes';
 import NavigationBar from '../components/NavigationBar'
 
 function Routes(){
@@ -12,6 +12,7 @@ function Routes(){
                 <Route exact path="/login" component={Login} />
                 <Route exact path="/signup" component={SignUp} />
                 <Route exact path="/product/:idProduct" component={Product} />
+                <Route component={Error404} />
             </Switch>
         </Router>
     )

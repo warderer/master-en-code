@@ -1,19 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import itemsApi from '../../services/api';
+import React, { useEffect } from 'react';
+import { ProductsContext } from '../../context';
 
 export default (Home) => function HomeHoc() {
-    const [products, setProducts] = useState([]);
 
-    const fetchProducts = async () =>{
-        const data = await itemsApi.getAllItems();
-        setProducts(data);
-    }
+    const [{ products, productsIsFetching, productsIsError, }, { getProducts }] = ProductsContext.useProductsContext();
 
     useEffect(() => {
-        fetchProducts();
-    }, [])
+        getProducts();
+    }, []);
 
-    return(
-        <Home products={products}/>
+    const bannerInfo = {
+        title: 'X-MAS DISCOUNTS',
+        subtitle: 'Hurry while stocks last'
+    }
+
+    const renderContent = () => {
+        if (productsIsFetching) {
+            return (
+                <Home products={[]} banner={bannerInfo} />
+            )
+        }
+        if (productsIsError) {
+            return <h1>{productsIsError}</h1>
+        }
+        if (products) {
+            return (
+                <Home products={products} banner={bannerInfo} />
+            )
+        }
+        return null;
+    }
+
+    return (
+        renderContent()
     )
 }

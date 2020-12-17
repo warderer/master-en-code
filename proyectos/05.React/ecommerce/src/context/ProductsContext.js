@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import itemsApi from '../services/api';
+import { itemsApi } from '../services/api';
 
 const ProductsContext = React.createContext(undefined);
 

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
-import itemsApi from '../../services/api';
+import { itemsApi } from '../../services/api';
 
 export default (Product) => function ProductHoc(){
     const params = useParams();

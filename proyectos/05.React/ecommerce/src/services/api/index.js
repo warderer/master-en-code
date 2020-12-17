@@ -1,3 +1,4 @@
 import * as itemsApi from './items';
+import * as usersApi from './users';
 
-export default itemsApi;
+export {itemsApi, usersApi}

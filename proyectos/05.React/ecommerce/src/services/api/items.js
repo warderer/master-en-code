@@ -1,4 +1,5 @@
 
+// Referencia Async-Await: https://javascript.info/async-await
 import axios from 'axios';
 
 const API_BASE_URI = 'https://ecomerce-master.herokuapp.com/api/v1';

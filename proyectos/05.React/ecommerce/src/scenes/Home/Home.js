@@ -12,9 +12,9 @@ function Home({products, banner}) {
                 </div>
             </div>
             <div className="d-flex justify-content-center flex-wrap align-items-stretch">
-                {products?.length === 0
-                    ? <h2>Loading Products... Please Wait...</h2>
-                    : products?.map((item, index) => <SingleProductCard key={index} product={item} />)
+                {products?.length
+                    ? products?.map((item, index) => <SingleProductCard key={index} product={item} />)
+                    : <h2>Loading Products... Please Wait...</h2>
                 }
             </div>
         </div>

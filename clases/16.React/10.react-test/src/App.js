@@ -6,8 +6,8 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+        <p id="un-p">
+          Aqui esta un parrafo para que pruebes
         </p>
         <a
           className="App-link"
@@ -18,6 +18,14 @@ function App() {
           Learn React
         </a>
       </header>
+
+      <form onSubmit={(e)=>{
+        e.preventDefault();
+      }}>
+        <input type="text" id="user"/>
+        <input type="password" required id="password"/>
+        <button id="onLogin"> Login </button>
+      </form>
     </div>
   );
 }

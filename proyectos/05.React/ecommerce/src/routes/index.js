@@ -7,7 +7,9 @@ import NavigationBar from '../components/NavigationBar'
 function Routes(){
     return(
         <Router>
-            <NavigationBar />
+            <ProductsContext.ProductsProvider>
+                <NavigationBar />
+            </ProductsContext.ProductsProvider>
             <Switch>
                 <Route exact path="/" >
                     <ProductsContext.ProductsProvider>

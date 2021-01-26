@@ -8,10 +8,6 @@ function ProductsProvider(props){
     const [productsIsFetching, productsSetIsFetching] = useState(false);
     const [productsIsError, productsSetIsError] = useState(false);
 
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [selectedProductIsFetching, selectedProductSetIsFetching] = useState(false);
-    const [selectedProductIsError, selectedProductSetIsError] = useState(false);
-
     const getProducts = async () =>{
         productsSetIsFetching(true);
         try {
@@ -24,25 +20,14 @@ function ProductsProvider(props){
         }
     };
 
-    const getSelectedProduct = async (productId) =>{
-        selectedProductSetIsFetching(true);
-        try {
-            const data = await itemsApi.getOneItem(productId);
-            setSelectedProduct(data);
-            selectedProductSetIsFetching(false);
-        } catch (error) {
-            selectedProductSetIsError(error);
-            selectedProductSetIsFetching(false);
-        }
-    }
+    const getProductos = () => {return products}
 
     const state = [
         {
-            products, productsIsFetching, productsIsError, selectedProduct, selectedProductIsFetching, selectedProductIsError,
+            products, productsIsFetching, productsIsError,
         },
         {
-            getProducts,
-            getSelectedProduct,
+            getProducts, getProductos
         }
     ];
 

@@ -4,25 +4,25 @@ import { usersApi } from '../services/api';
 const UsersContext = React.createContext(undefined);
 
 function UsersProvider(props){
-    const [users, setUsers] = useState(null);
-    const [usersIsFetching, usersSetIsFetching] = useState(false);
-    const [usersIsError, usersSetIsError] = useState(false);
+    const [user, setUser] = useState(null);
+    const [userIsFetching, userSetIsFetching] = useState(false);
+    const [userIsError, userSetIsError] = useState(false);
 
     const getUsers = async () =>{
-        usersSetIsFetching(true);
+        userSetIsFetching(true);
         try {
-            const data = await usersApi.getAllUsers();
-            setUsers(data);
-            usersSetIsFetching(false);
+            const data = await usersApi.getCurrentUser();
+            setUser(data);
+            userSetIsFetching(false);
         } catch (error) {
-            usersSetIsError(error);
-            usersSetIsFetching(false);
+            userSetIsError(error);
+            userSetIsFetching(false);
         }
     };
 
     const state = [
         {
-            users, usersIsFetching, usersIsError,
+            user, userIsFetching, userIsError,
         },
         {
             getUsers,

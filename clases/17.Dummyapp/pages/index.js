@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+//Usamos link si queremos llevar la gestión de historial de rutas de next
 
 export default function Home() {
   return (
@@ -13,6 +15,14 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to DummyApp
         </h1>
+        <div className={styles.links}>
+          <Link href="/posts">
+            <a> To Post </a>
+          </Link>
+          <Link href="/users">
+            <a> To Users </a>
+          </Link>
+        </div>
       </main>
 
       <footer className={styles.footer}>

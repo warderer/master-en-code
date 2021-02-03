@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Link from 'next/Link';
 import styles from '../../styles/Home.module.css';
 import axios from 'axios';
 
@@ -30,7 +31,14 @@ export default function Users(props) {
                 <title>Users</title>
             </Head>
             <h2>En Users</h2>
-    {props.users.data.map(user => <li>{user.firstName}{' '}{user.lastName}</li>)}
+            {
+                props.users.data.map(user =>
+                    <Link href={`/users/${user.id}`}>
+                        <a>
+                            {user.firstName}{' '}{user.lastName}
+                        </a>
+                    </Link>)
+            }
         </div>
     )
 }

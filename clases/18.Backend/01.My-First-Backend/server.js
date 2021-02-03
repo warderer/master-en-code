@@ -24,7 +24,18 @@ app.get('/api/saludo', (req, res) => {
         name: 'Firulais'
     }
     res.send(myJson) // Contesto la petición
-})
+});
+
+// Obtener parametros de rutas dinámicas
+// Params 'URL/api/pets/1'
+// Los : en la ruta indica que es un valor dinámico (parametro)
+app.get('/api/pets/:petId', (req, res) => {
+    //console.log(req)
+    console.log(req.params) // Ejemplo: { petId: '1' }
+    const idPet = req.params.petId;
+    const mensaje = { id: `El ID que buscas es: ${idPet}`};
+    res.send(mensaje);
+});
 
 // Levanta el servidor en un puerto y recibe un Callback
 app.listen(3000, () => {

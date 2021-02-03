@@ -37,6 +37,19 @@ app.get('/api/pets/:petId', (req, res) => {
     res.send(mensaje);
 });
 
+// Los códigos de estado son una Convención,
+// por lo que no es una obligación seguir las reglas existentes
+// También podemos usar lógica en la respuesta de la API.
+app.get('/api/cakes/:cakeId', (req, res) => {
+    const idCake = req.params.cakeId;
+    if ( idCake > 99) {
+        res.status(404).send({ mensaje: 'El ID del pastel no existe' });
+    } else {
+        const mensaje = { id: `El ID que buscas es: ${idCake}`};
+        res.send(mensaje);
+    }
+});
+
 // Levanta el servidor en un puerto y recibe un Callback
 app.listen(3000, () => {
     console.log('Server ON');

@@ -50,6 +50,28 @@ app.get('/api/cakes/:cakeId', (req, res) => {
     }
 });
 
+// Query
+// Query 'URL/api/pets?color=blanco&comida=croquetas
+// Similar a Params, pero suele incluir más de un dato
+// Las Query son abiertas, no definimos cuantas variables nos tienen que enviar ni como se llaman.
+// La responsabilidad del Backend es tomar solo en cuenta los adecuados.
+app.get('/api/pets', (req, res) => {
+    console.log(req.query); //req.query hace referencia a todas las query que me mandan
+    const petsArray = [
+        {   id: 1,
+            name: 'Firulais'
+        },
+        {   id: 2,
+            name: 'Moly'
+        },
+        {   id: 3,
+            name: 'Kiara'
+        }
+    ];
+    res.send(petsArray);
+});
+
+
 // Levanta el servidor en un puerto y recibe un Callback
 app.listen(3000, () => {
     console.log('Server ON');

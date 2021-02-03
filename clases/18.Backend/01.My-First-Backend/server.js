@@ -41,7 +41,7 @@ app.get('/api/pets/:petId', (req, res) => {
 // por lo que no es una obligación seguir las reglas existentes
 // También podemos usar lógica en la respuesta de la API.
 app.get('/api/cakes/:cakeId', (req, res) => {
-    const idCake = req.params.cakeId;
+    const idCake = parseInt(req.params.cakeId);
     if ( idCake > 99) {
         res.status(404).send({ mensaje: 'El ID del pastel no existe' });
     } else {

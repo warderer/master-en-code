@@ -18,6 +18,14 @@ app.get('/', (request, response) => {
     )
 });
 
+app.get('/api/saludo', (req, res) => {
+    const myJson = { // Creo mi objeto JSON
+        id: 1,
+        name: 'Firulais'
+    }
+    res.send(myJson) // Contesto la petición
+})
+
 // Levanta el servidor en un puerto y recibe un Callback
 app.listen(3000, () => {
     console.log('Server ON');

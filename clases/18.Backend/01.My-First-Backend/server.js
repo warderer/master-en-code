@@ -121,7 +121,7 @@ app.get('/api/swapi/:idPersonaje', async (req,res)=>{
     const id = req.params.idPersonaje;
     try {
         const swapiRes = await axios.get(`https://swapi.dev/api/people/${id}`);
-        res.send(swapiRes.data); //status 200
+        res.send({personaje: swapiRes.data}); //status 200
     }
     catch(err) {
         res.status(err.response.status).json({

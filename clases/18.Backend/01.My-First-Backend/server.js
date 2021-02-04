@@ -6,6 +6,9 @@ const express = require('express');
 
 // Crear una instancia de express y llama a la 'App';
 const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+/* Nota: Las rutas se deben definir despuúes de const app = express () y antes de app.listen
 
 // Crear nuestro primer EndPoint (GET) '/'
 // get() params --> 'URI', callback
@@ -126,11 +129,27 @@ app.get('/api/swapi/:idPersonaje', async (req,res)=>{
     catch(err) {
         res.status(err.response.status).json({
             error: err.message
-        })
+        });
     }
+});
+
+/* POST */
+    // El Post tiene la habilidad de recibir BODY
+    // Por defecto en Express, no viene configurado para recibir el BODY
+    // Es necesario hacer una configuración justo debajo de const = app = express();
+    // app.use(express.urlencoded({ extended: true }));
+    // app.use(express.json())
+app.post('/api/post',(req, res)=>{
+    console.log(req.body);
+    const newPet = {
+        id: 3,
+        name: 'Snoopy',
+        age: 5
+    }
+    res.status(201).send(newPet);
 });
 
 // Levanta el servidor en un puerto y recibe un Callback
 app.listen(3000, () => {
     console.log('Server ON');
-})
+});

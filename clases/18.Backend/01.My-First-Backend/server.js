@@ -149,6 +149,32 @@ app.post('/api/post',(req, res)=>{
     res.status(201).send(newPet);
 });
 
+/* EJERCICIOS PARTE 2 */
+// 5. - Hacer el ejercicio 2 pero desde un post mandado num1 y num2 desde el body
+app.post('/api/suma',(req, res)=>{
+    const {num1, num2} = req.body
+    if ((typeof num1 === 'number')&&(typeof num2 === 'number')) {
+        suma = parseInt(num1) + parseInt(num2);
+        res.send({resultado:suma});
+    } else {
+        res.status(400).send('Error: No valid values')
+    }
+});
+
+// 6. - Hacer un PUT que reciba un body y lo responda de vuelta
+app.put('/api/devolver', (req, res) => {
+    res.status(200).send(req.body);
+});
+
+// 7. - Hacer un delete que reciba como parametro un id (Solo es válido el id: 3, para cualquier otro id responde 404)
+app.delete('/api/borrar/:id', (req, res) => {
+    const {id} = req.params;
+    if (id == 3) {
+        res.status(200).send({Mensaje: `Se ha borrado correctamente el ID: ${id}`})
+    }
+    else res.status(400).send({Mensaje: 'Error, se esperaba ID 3'});
+});
+
 // Levanta el servidor en un puerto y recibe un Callback
 app.listen(3000, () => {
     console.log('Server ON');

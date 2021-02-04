@@ -27,3 +27,9 @@
 //                         ...,
 //     }
 // }
+
+
+/* EJERCICIOS 2: POST PUT */
+// 5. - Hacer el ejercicio 2 pero desde un post mandado num1 y num2 desde el body
+// 6. - Hacer un PUT que reciba un body y lo responda de vuelta
+// 7. - Hacer un delete que reciba como parametro un id (Solo es válido el id: 3, para cualquier otro id responde 404)

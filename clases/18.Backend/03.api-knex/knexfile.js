@@ -3,18 +3,22 @@
 module.exports = {
 
   development: {
-    client: 'sqlite3',
+    client: 'postgresql',
     connection: {
-      filename: './dev.sqlite3'
-    }
+      host:     'ziggy.db.elephantsql.com',
+      database: 'xmjuwhfz',
+      user:     'xmjuwhfz',
+      password: 'SqaKpHf0WzBnXp_Zh97AsFD-YbR7Dw2E'
+    },
   },
 
   staging: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host:     'ziggy.db.elephantsql.com',
+      database: 'xmjuwhfz',
+      user:     'xmjuwhfz',
+      password: 'SqaKpHf0WzBnXp_Zh97AsFD-YbR7Dw2E'
     },
     pool: {
       min: 2,
@@ -28,9 +32,10 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
-      user:     'username',
-      password: 'password'
+      host:     'ziggy.db.elephantsql.com',
+      database: 'xmjuwhfz',
+      user:     'xmjuwhfz',
+      password: 'SqaKpHf0WzBnXp_Zh97AsFD-YbR7Dw2E'
     },
     pool: {
       min: 2,

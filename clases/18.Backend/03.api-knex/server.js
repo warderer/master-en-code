@@ -5,12 +5,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/api/v1/', homeRoutes);
-
 // AQUÍ DEBERIAN IR LAS RUTAS
-    //RUTAS
-    //app.use(myRoutes); //Llamamos a las rutas de myRoutes
-//
+app.use('/api/v1/', homeRoutes);
 
 app.listen(3000,() => {
     console.log('Server ON');

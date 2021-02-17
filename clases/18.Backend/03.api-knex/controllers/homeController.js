@@ -10,7 +10,6 @@ const createHome = (req, res) => {
     .catch((err)=> {
         res.status(400).send(err);
     })
-    //res.send({ message: 'Home creado (FAKE)' })
 };
 
 const findAllHomes = (req, res) => {
@@ -21,11 +20,21 @@ const findAllHomes = (req, res) => {
     .catch((err)=> {
         res.status(400).send(err);
     })
-    //res.send({ message: 'Home creado (FAKE)' })
+};
+
+const findOneHome = (req, res) => {
+    ModelHome.findOne(req.params.idHome)
+    .then((row) => {
+        res.status(200).send(row);
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
 };
 
 
 module.exports = {
     createHome,
-    findAllHomes
+    findAllHomes,
+    findOneHome
 }

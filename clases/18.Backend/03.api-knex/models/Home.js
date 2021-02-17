@@ -22,7 +22,16 @@ const findAll = () => {
         .from('homes')
 };
 
+const findOne = (houseId) => {
+    // SELECT title, house_id ... FROM 'homes' WHERE house_id=id
+    return knex
+        .select(['title','house_id','address','guests','description','created_at'])
+        .from('homes')
+        .where({ house_id: houseId });
+}
+
 module.exports = {
     create,
     findAll,
+    findOne,
 };

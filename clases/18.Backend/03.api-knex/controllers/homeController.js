@@ -13,6 +13,19 @@ const createHome = (req, res) => {
     //res.send({ message: 'Home creado (FAKE)' })
 };
 
+const findAllHomes = (req, res) => {
+    ModelHome.findAll()
+    .then((row) => {
+        res.status(200).send(row);
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
+    //res.send({ message: 'Home creado (FAKE)' })
+};
+
+
 module.exports = {
     createHome,
+    findAllHomes
 }

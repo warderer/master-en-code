@@ -4,34 +4,23 @@
 // Conectarme a la base de datos
 // Config exporta la configuración de la INSTANCIA activa de la base de datos con sus detalles de conexión.
 const knex = require('../config');
+const createModelKnex = require('../utils/createModelUtil');
 
-const create = (bodyHome) => {
-    // Crear registro en la tabla HOMES
-    // bodyHome es un objeto que contiene los valores a insertar
+const TABLE = 'homes';
+const RETURNING_DATA = ['title','house_id','address','guests','detail', 'fk_user', 'created_at'];
+const TABLE_ID = 'house_id';
 
-    return knex // Retorno una promesa para que la logica se maneje (.then y .catch) a nivel del controlador, respetando MVC.
-        .insert(bodyHome) // ¿Qué datos voy a insertar? {title: titulo, address: 'x', guests: 5 }
-        .returning(['title','house_id','address','guests','description','created_at']) //¿Que voy a regresar? - Select house_id, title ...
-        .into('homes') // ¿De que tabla? - FROM homes
-    };
+const HomeModel = createModelKnex(knex, TABLE, RETURNING_DATA, TABLE_ID);
 
-const findAll = () => {
-    // Obtiene todos los registros de la tabla HOMES
+// Vamos a añadir funciones especificas para HomeModel
+HomeModel.findOneWithUser = (houseId) => {
     return knex
-        .select(['title','house_id','address','guests','description','created_at'])
-        .from('homes')
-};
-
-const findOne = (houseId) => {
-    // SELECT title, house_id ... FROM 'homes' WHERE house_id=id
-    return knex
-        .select(['title','house_id','address','guests','description','created_at'])
-        .from('homes')
-        .where({ house_id: houseId });
+        .select()
+        .from(TABLE)
+        .join('users','users.user_id', '=', `${TABLE}.fk_user`)
+        .where({ [TABLE_ID]: houseId })
+        //Join: Con que tabla se va a unir, 
+        //Select: Podemos pedir datos especificos con [ nombre.tabla, nombre.tabla ]
 }
 
-module.exports = {
-    create,
-    findAll,
-    findOne,
-};
+module.exports = HomeModel;

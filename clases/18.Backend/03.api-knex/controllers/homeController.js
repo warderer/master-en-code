@@ -32,9 +32,53 @@ const findOneHome = (req, res) => {
     })
 };
 
+const updateOneHome = (req, res) => {
+    ModelHome.update(req.params.idHome, req.body)
+    .then((row) => {
+        res.status(200).send(row);
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
+};
+
+const destroyOneHome = (req, res) => {
+    ModelHome.destroy(req.params.idHome)
+    .then(() => {
+        res.status(204).send();
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
+}
+
+const softDeleteOneHome = (req, res) => {
+    ModelHome.softDelete(req.params.idHome)
+    .then(() => {
+        res.status(204).send();
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
+}
+
+const findOneWithUser = (req, res) => {
+    ModelHome.findOneWithUser(req.params.idHome)
+    .then((row) => {
+        res.status(200).send(row);
+    })
+    .catch((err)=> {
+        res.status(400).send(err);
+    })
+};
+
 
 module.exports = {
     createHome,
     findAllHomes,
-    findOneHome
+    findOneHome,
+    findOneWithUser,
+    updateOneHome,
+    destroyOneHome,
+    softDeleteOneHome
 }

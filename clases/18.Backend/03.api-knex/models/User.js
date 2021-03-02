@@ -1,27 +1,11 @@
 const knex = require('../config');
 
-const create = (bodyUser) => {
-    return knex
-        .insert(bodyUser) 
-        .returning(['user_id','name','last_name','email','phone','description','created_at'])
-        .into('users')
-    };
+const createModelKnex = require('../utils/createModelUtil');
 
-const findAll = () => {
-    return knex
-        .select(['user_id','name','last_name','email','phone','description','created_at','active'])
-        .from('users')
-};
+const TABLE = 'users';
+const RETURNING_DATA = ['user_id','name','last_name','email','phone','description','created_at'];
+const TABLE_ID = 'user_id';
 
-const findOne = (userId) => {
-    return knex
-        .select(['user_id','name','last_name','email','phone','description','created_at','active'])
-        .from('users')
-        .where({ user_id: userId });
-}
+const UsersModel = createModelKnex(knex, TABLE, RETURNING_DATA, TABLE_ID);
 
-module.exports = {
-    create,
-    findAll,
-    findOne,
-};
+module.exports = UsersModel;

@@ -9,6 +9,13 @@ const createModelKnex = (knex, table, returningData, tableId) => {
             .returning(returningData)
             .into(table) 
         };
+
+    const find = (query) => {
+        return knex
+            .select(returningData)
+            .from(table)
+            .where(query)
+    };
     
     const findAll = () => {
         return knex
@@ -47,6 +54,7 @@ const createModelKnex = (knex, table, returningData, tableId) => {
 
     return {
         create,
+        find,
         findAll,
         findOne,
         update,

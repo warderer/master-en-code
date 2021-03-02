@@ -1,6 +1,11 @@
+const { hash } = require('bcrypt');
 const ModelUser = require('../models/User');
+const hashPassword = require('../utils/hashPassword');
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
+    if (req.body.password){
+        req.body.password = await hashPassword(req.body.password);
+    }
     ModelUser.create(req.body)
     .then((row) => {
         res.status(201).send(row);

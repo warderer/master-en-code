@@ -5,6 +5,7 @@ const router = express.Router();
 const userController = require('../controllers/userController');
 
 router.post('/user', (userController.createUser));
+router.post('/user/login', (userController.login));
 router.get('/users', (userController.findAllUsers));
 router.get('/user/:idUser', (userController.findOneUser));
 router.patch('/user/:idUser', (userController.updateOneUser));

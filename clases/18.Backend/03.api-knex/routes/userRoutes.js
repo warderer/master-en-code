@@ -3,10 +3,11 @@ const express = require('express');
 const router = express.Router();
 const verify = require('../middlewares/verify');
 const checkRole = require('../middlewares/checkRole');
-
 const userController = require('../controllers/userController');
+// VALIDATORS
+const { createUserValidator } = require('../validators/userValidator');
 
-router.post('/user', (userController.createUser));
+router.post('/user',[ createUserValidator ], (userController.createUser));
 router.post('/user/login', (userController.login));
 router.get('/users', [verify, checkRole('admin')], (userController.findAllUsers));
 router.get('/user/:idUser', [verify, checkRole('guest')], (userController.findOneUser));

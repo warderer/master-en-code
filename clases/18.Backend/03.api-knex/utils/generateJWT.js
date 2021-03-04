@@ -1,6 +1,6 @@
 const JWT = require('jsonwebtoken');
 //firma, esto debe ir como variable de entorno
-const SECRET_KEY = '6cYPrkv2HNzX5ehJyrww3A8t1gxYKzUtNu3EIhdfCMhGZCrZf+W53g=='
+const { SECRET_KEY } = process.env; //es lo mismo que const SECRET_KEY = process.env.SECRET_KEY;
 
 module.exports = ({user_id, rol, email}) => {
     const payload = {

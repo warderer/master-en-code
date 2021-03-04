@@ -1,6 +1,6 @@
 const JWT = require('jsonwebtoken');
 const UserModel = require('../models/User');
-const SECRET_KEY = '6cYPrkv2HNzX5ehJyrww3A8t1gxYKzUtNu3EIhdfCMhGZCrZf+W53g==';
+const { SECRET_KEY } = process.env; //es lo mismo que const SECRET_KEY = process.env.SECRET_KEY;
 
 module.exports = async (req, res, next) => {
     const Authorization = req.get('Authorization'); //Leo la cabecera de Authorization que contiene el token.

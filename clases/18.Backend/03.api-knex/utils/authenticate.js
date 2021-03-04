@@ -6,14 +6,19 @@ module.exports = ({ email, password}) => {
         UserModel.find({email})
             .then( (result) => {
                 const [user] = result;
+                if(!user) reject(new Error('El usuario no existe'));
                 //same es true o false, dependiendo de la comparación.
                 //result es el usuario, por lo que si es correcto hay que devolver su info
                 bcrypt.compare(password, user.password, function (err, same) {
-                    same ? resolve({same, user}) : reject(new Error('El password es incorrecto'))
-                })
+                    if (same) {
+                        resolve({same, user})
+                    } else {
+                        reject(new Error('El password es incorrecto')); //Aqui usamos Reject por que thrown new error se ejecuta en un tiempo diferente por asincronismo
+                    }
+                });
             })
             .catch((error) => {
                 reject(error)
-            })
-    })
-}
+            });
+    });
+};

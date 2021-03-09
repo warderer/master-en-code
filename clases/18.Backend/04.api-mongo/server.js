@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const { MongoClient } = require('mongodb');
+const { connect, get, betterConnect } = require('./db');
+//const { MongoClient } = require('mongodb');
 
 const app = express();
 const { MONGO_URI } = process.env; //Variable de entorno con datos de conexión
@@ -10,47 +11,33 @@ app.use(express.json());
 
 app.get('/users', (req, res) => {
     //crear un nuevo user
-    MongoClient.connect(MONGO_URI, {
-        useUnifiedTopology: true, //Evitar DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
-        useNewUrlParser: true,
+    const database = get().db('apimongo')
+    const collection = database.collection('users');
+    collection.find({}).toArray(function(error, results){
+        res.status(200).send(results)
     })
-    .then( (db) => {
-        console.log('Conected to Database');
-        const database = db.db('apimongo');
-        const collection = database.collection('users');
-        collection.find({}).toArray(function(error, results){
-            res.status(200).send(results);
-            db.close(); //Cerramos la conexión a la DB por seguridad.
-        })
-    })
-    .catch( (err) => {
-        console.log(`DB Connection Error: ${err.message}`);
-    });
 });
 
 app.post('/users', (req, res) => {
     //crear un nuevo user
-    MongoClient.connect(MONGO_URI, {
-        useUnifiedTopology: true, //Evitar DeprecationWarning: current Server Discovery and Monitoring engine is deprecated
-        useNewUrlParser: true,
-    })
-    .then( (db) => {
-        console.log('Conected to Database');
-        const database = db.db('apimongo');
-        const collection = database.collection('users');
-        collection.insertOne(req.body, function(err,user){
-            if(err) throw err;
-            res.status(201).send(user);
-            db.close(); //Cerramos la conexión a la DB por seguridad.
-        });
-    })
-    .catch( (err) => {
-        console.log(`DB Connection Error: ${err.message}`);
+    const database = get().db('apimongo');
+    const collection = database.collection('users');
+    collection.insertOne(req.body, function(err, result){
+        if(err) throw err;
+        const [ user ] = result.ops;
+        res.status(201).send(user);
     });
 });
 
-app.listen(3000,() => {
-    console.log('SERVER ON');
-
+// Solo se enciende el servidor si se puede conectar a la base de datos
+betterConnect(MONGO_URI, function(error){
+    if(error){
+        console.log("Unable to connect to Mongo");
+        process.exit(1); // Termina con el server
+    } else {
+        //console.log('Conected to Database')
+        app.listen(3000,() => {
+            console.log('SERVER ON');
+        });
+    }
 });
-

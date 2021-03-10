@@ -9,7 +9,11 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 // ESTA ES LA CONEXIÓN A MONGO
-mongoose.connect(MONGO_URI); // inicia la conexión
+mongoose.connect(MONGO_URI, {
+    useNewUrlParser: true, //Para usar la URL nueva de conexión
+    useUnifiedTopology: true, // Soporte para multiples versiones de mongo
+    useCreateIndex: true,
+}); // inicia la conexión
 const db = mongoose.connection; // aquí esta guardada el estatus de la conexión
 
 db.on('error', function(err){ // Se ejecuta cada vez que hay un error en la conexión

@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-const { connect, get, betterConnect } = require('./db');
+const { connect, betterConnect } = require('./db');
+const { findAll, create } = require('./services/userServices');
 //const { MongoClient } = require('mongodb');
 
 const app = express();
@@ -9,24 +10,26 @@ const { MONGO_URI } = process.env; //Variable de entorno con datos de conexión
 app.use(express.urlencoded( { extended: true }));
 app.use(express.json());
 
-app.get('/users', (req, res) => {
-    //crear un nuevo user
-    const database = get().db('apimongo')
-    const collection = database.collection('users');
-    collection.find({}).toArray(function(error, results){
-        res.status(200).send(results)
-    })
+//Promesas Explicitas: Then y Catch
+//Promesas Implicitas: Async y Await
+app.get('/users', async (req, res) => {
+    try{
+        const users = await findAll();
+        return res.status(200).send(users);
+    } catch(error) {
+        return res.status(400).send(error);
+    }
 });
 
-app.post('/users', (req, res) => {
+app.post('/users', async (req, res) => {
     //crear un nuevo user
-    const database = get().db('apimongo');
-    const collection = database.collection('users');
-    collection.insertOne(req.body, function(err, result){
-        if(err) throw err;
-        const [ user ] = result.ops;
-        res.status(201).send(user);
-    });
+    try{
+        const user = await create(req.body);
+        return res.status(200).send(user);
+    } catch (error) {
+        console.log(error);
+        return res.status(400).send(error);
+    }
 });
 
 // Solo se enciende el servidor si se puede conectar a la base de datos

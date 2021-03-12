@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const Users = require('./Users');
 
 const app = express();
-const { MONGO_URI } = process.env; //Variable de entorno con datos de conexión
+const { MONGO_URI_DEV } = process.env; //Variable de entorno con datos de conexión
 
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 // ESTA ES LA CONEXIÓN A MONGO
-mongoose.connect(MONGO_URI, {
+mongoose.connect(MONGO_URI_DEV, {
     useNewUrlParser: true, //Para usar la URL nueva de conexión
     useUnifiedTopology: true, // Soporte para multiples versiones de mongo
     useCreateIndex: true,
@@ -22,7 +22,7 @@ db.on('error', function(err){ // Se ejecuta cada vez que hay un error en la cone
 });
 
 db.once('open', function(){ // Se ejecuta una vez y solo cuando se completo la conexión
-    console.log('Conected to database!!');
+    console.log('Conected to database!!!!!');
 });
 
 app.get('/users', (req,res) => {

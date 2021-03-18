@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google-cloud/storage": "^5.8.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.11.15"
+    "firebase": "^8.3.0",
+    "mongoose": "^5.11.15",
+    "multer": "^1.4.2"
   }
 }

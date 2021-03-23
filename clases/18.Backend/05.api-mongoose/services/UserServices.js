@@ -28,7 +28,7 @@ const findUserbyId = async(id) => {
     //     });
     // });
 // Usar Async/Await me ayuda a generar menos código:
-    const user = await Users.findUserbyId(id);
+    const user = await Users.findById(id);
     if(!user) throw new Error("Usuario no encontrado")
     return user;
 }

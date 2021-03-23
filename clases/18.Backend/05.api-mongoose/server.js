@@ -53,11 +53,11 @@ app.get('/users', UserController.fetch);
 //Indicamos con el middleware de multer cual es el campo del archivo
 app.post('/users',[mult.single('photo'), manageFiles], UserController.create);
 
-app.get('users/:id', UserController.findOne);
+app.get('/users/:id', UserController.findOne);
 
-app.patch('users/:id',[mult.single('photo'), manageFiles], UserController.update);
+app.patch('/users/:id',[mult.single('photo'), manageFiles], UserController.update);
 
-app.delete('users/:id', UserController.remove);
+app.delete('/users/:id', UserController.remove);
 
 app.listen(3000,() => {
     console.log('SERVER ON');

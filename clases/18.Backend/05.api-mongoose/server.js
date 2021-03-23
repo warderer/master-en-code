@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const multer = require('multer');
-const Users = require('./Users');
+const UserController = require('./controllers/UsersController');
 //const storage = require('./utils/storage');
 const manageFiles = require('./middlewares/manageFiles');
 
@@ -48,28 +48,16 @@ db.once('open', function(){ // Se ejecuta una vez y solo cuando se completo la c
     console.log('Conected to database!!!!!');
 });
 
-app.get('/users', (req,res) => {
-    Users.find({}).then((result) => { //mongoose regresa una promesa y lo trae en arreglo
-        res.status(200).send(result)
-    });
-});
+app.get('/users', UserController.fetch);
 
-app.post('/users',[mult.single('photo'), manageFiles], async (req,res) => { //Indicamos con el middleware de multer cual es el campo del archivo
-    // Esto se movio al middleware manageFiles.js
-    // if(req.file) { //req.file es el archivo "photo" procesado por multer
-    //     try {
-    //         const url = await storage(req.file); //aqui subo mi archivo a firebase
-    //         req.body.photo = url; // voy a guardar la url de la imagen en la base de datos
-    //     } catch (error) {
-    //         console.log({"message":error})
-    //     }    
-    //}
-    Users.create(req.body).then((user) => {
-        res.status(201).send(user);
-    }).catch((error) => {
-        res.status(400).send(error);
-    })
-});
+//Indicamos con el middleware de multer cual es el campo del archivo
+app.post('/users',[mult.single('photo'), manageFiles], UserController.create);
+
+app.get('users/:id', UserController.findOne);
+
+app.patch('users/:id',[mult.single('photo'), manageFiles], UserController.update);
+
+app.delete('users/:id', UserController.remove);
 
 app.listen(3000,() => {
     console.log('SERVER ON');

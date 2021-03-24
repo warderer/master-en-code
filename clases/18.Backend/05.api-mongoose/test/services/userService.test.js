@@ -31,6 +31,28 @@ describe('User services', () =>{
     });
 
     it('Esto no debe generar un usuario', async() => {
-
+        // thThrow trabaja solo con funciones sincronas, por lo que debemos esperar que se resuelva la promesa con rejects
+        expect(async () => await userService.createUser()).rejects.toThrow('No hay un usuario');
     });
+
+    it('Esto debe devolver un arreglo de usuarios', async() => {
+        const mockUser1 = {
+            name:"test user",
+            email:"testuser1@gmail.com",
+            password:"test"
+        }
+
+        const mockUser2 = {
+            name:"test user 2",
+            email:"testuser2@gmail.com",
+            password:"test"
+        }
+
+        await userService.createUser(mockUser1);
+        await userService.createUser(mockUser2);
+
+        const users = await userService.findUsers();
+        expect(users).toHaveLength(2);
+        expect(users[0]).toHaveProperty('_id');
+    })
 })

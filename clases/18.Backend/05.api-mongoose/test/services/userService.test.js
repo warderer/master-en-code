@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const dbHandler = require('../db-handler');
-const userService = require('../../services/UserServices');
+const userServices = require('../../services/UserServices');
 const userModel = require('../../models/Users');
 
 //antes de los test ejecuta esto
@@ -24,7 +24,7 @@ describe('User services', () =>{
             password:"test"
         }
 
-        const userDb = await userService.createUser(mockUser);
+        const userDb = await userServices.createUser(mockUser);
 
         expect(mockUser.email).toBe(userDb.email);
         expect(userDb).toHaveProperty('_id');
@@ -32,7 +32,7 @@ describe('User services', () =>{
 
     it('Esto no debe generar un usuario', async() => {
         // thThrow trabaja solo con funciones sincronas, por lo que debemos esperar que se resuelva la promesa con rejects
-        expect(async () => await userService.createUser()).rejects.toThrow('No hay un usuario');
+        expect(async () => await userServices.createUser()).rejects.toThrow('No hay un usuario');
     });
 
     it('Esto debe devolver un arreglo de usuarios', async() => {
@@ -48,10 +48,10 @@ describe('User services', () =>{
             password:"test"
         }
 
-        await userService.createUser(mockUser1);
-        await userService.createUser(mockUser2);
+        await userServices.createUser(mockUser1);
+        await userServices.createUser(mockUser2);
 
-        const users = await userService.findUsers();
+        const users = await userServices.findUsers();
         expect(users).toHaveLength(2);
         expect(users[0]).toHaveProperty('_id');
     })

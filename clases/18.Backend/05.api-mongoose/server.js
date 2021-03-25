@@ -33,11 +33,14 @@ app.use(express.json());
 app.use('uploads', express.static('uploads')); //exponemos el directorio de uploads para que el contenido sea accesible por las rutas
 
 // ESTA ES LA CONEXIÓN A MONGO
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true, //Para usar la URL nueva de conexión
-    useUnifiedTopology: true, // Soporte para multiples versiones de mongo
-    useCreateIndex: true,
-}); // inicia la conexión
+// Jest automaticamente setea el ENV a test cuando corremos los test.
+if(process.env.NODE_ENV !== 'test') { //Valido que se conecte a la base de datos correcta en caso de hacer Test
+    mongoose.connect(MONGO_URI, {
+        useNewUrlParser: true, //Para usar la URL nueva de conexión
+        useUnifiedTopology: true, // Soporte para multiples versiones de mongo
+        useCreateIndex: true,
+    }); // inicia la conexión
+}
 const db = mongoose.connection; // aquí esta guardada el estatus de la conexión
 
 db.on('error', function(err){ // Se ejecuta cada vez que hay un error en la conexión
@@ -59,6 +62,10 @@ app.patch('/users/:id',[mult.single('photo'), manageFiles], UserController.updat
 
 app.delete('/users/:id', UserController.remove);
 
-app.listen(3000,() => {
-    console.log('SERVER ON');
-});
+if(process.env.NODE_ENV !== 'test') {
+    app.listen(3000,() => {
+        console.log('SERVER ON');
+    });
+}
+
+module.exports = app;

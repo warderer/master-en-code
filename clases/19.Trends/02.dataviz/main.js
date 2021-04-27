@@ -1,19 +1,32 @@
+//
+// ** 01. Ver el contenido de D3 **
+//
 console.log('D3',d3);
 
-// Cambiar el color de fondo del body
+//
+// ** 02. Cambiar el color de fondo del body **
+//
 d3.select('body').style('background-color','pink')
 
-// Cambiar de colro los parrafos
+
+// Cambiar de color los parrafos
 // d3
 //     .select('body')
 //     .selectAll('p')
 
-// Cambiar el color de cada parrafo de forma aleatoria
+//
+//  ** 03. Cambiar el color de cada parrafo de forma aleatoria **
+//
+
 // El segundo parametro puede ser un callback
 d3.selectAll('p').style('color',() => {
     return "hsl(" + Math.random() * 360 + ",100%,50%)";
 });
 
+
+//
+// ** 04. Iterar y traer los datos en pantalla **
+//
 const dataSet = [3,5,6,8,10,30];
 
 d3
@@ -28,7 +41,7 @@ d3
 
 
 //
-// ** Comenzando a Gráficar **
+// ** 05. Comenzando a Gráficar **
 //
 const paises = [
     { nombre : 'mexico', porcentaje : 875, color : 'green'},
@@ -52,3 +65,48 @@ d3
     .text((d) => {
         return `${d.nombre} ${d.porcentaje}`;
     })
+
+//
+// ** 06. Funciones Utiles para Arreglos **
+//
+const datosRandom = [21,43,12,46,35,67,99,34,87,1];
+
+// Suma todos los datos
+console.log(d3.sum(datosRandom)); // -> 445
+
+// Obtener el elemento máximo del arreglo
+console.log(d3.max(datosRandom)); // -> 99
+
+// Obtener el elemento múnimo del arreglo
+console.log(d3.min(datosRandom)); // -> 1
+
+// Obtener mínimo y máximo del arreglo
+console.log(d3.extent(datosRandom)); // Array -> [1, 99]
+
+// Obtener promedio
+console.log(d3.mean(datosRandom)); // -> 44.5
+
+// Crear un rango
+console.log(d3.range(1,11)); // -> [1,2,3,4,5,6,7,8,9,10]
+
+// Crear un rango con pasos (cada x veces)
+console.log(d3.range(1,11, 2)); // -> [1,3,5, 7, 9]
+
+
+//
+// ** 07. Actividad 10 mins **
+// Escribir en un parrafo las respuestas de las funciones anteriores
+//
+d3
+    .select('body') // Selecciona el Body
+    .append('p') // Creo un elemento p dentro de body
+    .html(()=>{ // Inserto HTML dentro de p
+        return `
+            La suma de todos los números es: ${d3.sum(datosRandom)} <br>
+            El número máximo del arreglo es: ${d3.max(datosRandom)} <br>
+            El número mínimo del arreglo es: ${d3.min(datosRandom)} <br>
+            El número mínimo es ${d3.extent(datosRandom)[0]} y el máximo ${d3.extent(datosRandom)[1]} <br>
+            El promedio de datos es ${d3.mean(datosRandom)} <br>
+            El Rango es ${d3.range(1,11)}
+        `;
+    });

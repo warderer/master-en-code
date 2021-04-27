@@ -39,18 +39,16 @@ fs.createReadStream('e.csv') // Lee un archivo y lo convierte en una linea de da
         };
         results.push(sessionClient)
     }) // Escuchadores de los eventos que detona el pipe y que su vez detona csv(), data = row del csv
-    .on('end', () => {
+    .on('end', async () => {
         //console.log(results);
-        for (let index = 0; index < 5; index++) {
-            console.log(results[index]);
+        for (let index = 0; index < results.length; index++) {
+            //console.log(results[index]);
             // 4. Insertar en la base de datos
             // Meter a la base de datos una muestra para probar que funcione
-            SesionCliente.create(results[index])
-                .then((result) => {
-                    console.log('Insertando id', result._id);
-                })
-                .catch((err)=>{
-                    console.log('error',err, results[index]);
-                })
+            try {
+                SesionCliente.create(results[index]);
+            } catch (err) {
+                console.log('error',err, results[index]);
+            }
         }
     })

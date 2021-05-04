@@ -62,20 +62,34 @@ d3.csv('AutosVendidosFeb2016.csv')
                 .attr('height', function (d) { return height - scalaY(d.quantity); })
                 .attr('fill', 'steelblue');
 
-        const tip = d3.tip().attr('class', 'd3-tip').html(function(event,d) {
-            return JSON.stringify(d);
-        });
+/* Trabajando con el Tip */
+        const tip = d3
+            .tip()
+            .attr('class', 'd3-tip')
+            .html(function(event,d) { // Recibe el evento y la data en que iteramos
+                //console.log('Tip Evento',event);
+                //console.log('Tip Data',d);
+                return `${d.name}<br>${d.quantity}`
+                //return JSON.stringify(d);
+            });
 
         svg.call(tip); // Llamar la inicialización del tip
 
+        // Creo un recuadro para mostrar el tip
         rect
             .on('mouseover.tip', tip.show)
             .on('mouseout.tip',  tip.hide)
-            .on('mouseover', function(d) {
-                d3.select(this).attr('fill', 'red');
+            .on('mouseover', function(d) { // Coloreo la barra al pasar el mouse
+                console.log(this);
+                //this contiene la barra que dispara el evento
+                d3
+                    .select(this)
+                    .attr('fill', 'red');
             })
             .on('mouseout', function() {
-                d3.select(this).attr('fill', 'steelblue');
+                d3
+                    .select(this)
+                    .attr('fill', 'steelblue');
             })
 
     }).catch((err) => {

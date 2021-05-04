@@ -6,7 +6,7 @@ d3.csv('AutosVendidosFeb2016.csv')
         quantity: parseInt(d.CANTIDAD)
     })))
     .then((data) => {
-        const charWidth = 1900;
+        const charWidth = window.innerWidth - 20; // window.innerWidth tamaño de la ventana inicial
         const charHeight = 600;
 
         // Ordeno la información de mayor a menor
@@ -24,9 +24,10 @@ d3.csv('AutosVendidosFeb2016.csv')
             .range([ height, 0 ])
             .domain([ 0, maxQuantity ]);
 
-        const scalaX = d3.scaleLinear()
+        const scalaX = d3.scaleBand()
             .range([ 0, width ])
             .domain(data.map(d => d.name))
+            .paddingInner(0.1)
 
         // Axis ayuda a definir los ejes
         const xAxis = d3.axisBottom(scalaX);
@@ -41,7 +42,7 @@ d3.csv('AutosVendidosFeb2016.csv')
             .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
         svg
-            .append('g')
+            .append('g') //agrupar SVGs
             .attr('class', 'y axis')
             .call(yAxis)
 

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap');
+
+body {
+    margin: 0;
+    font-size:16px;
+    font-family: 'Merriweather', serif;
+    background-color:#e1e6e9;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+header, main, footer {
+/* Centering main containers content with margin-left and right in auto*/
+    margin: 0 auto;
+}
+
+header {
+    padding-bottom: 25px;
+}
+
+header, footer {
+    background-color:#3d8b9c;
+    text-align: center;
+}
+
+header figure {
+    margin:0;
+}
+
+.logo img {
+    max-width: 250px;
+}
+
+header section {
+    margin: 0 auto;
+    max-width: 560px;
+    color:#fff;
+}
+
+header h1 {
+    background-color: #fff;
+    padding: 10px 0;
+    font-size:2em;
+    color:#3d8b9c;
+}
+
+h2 {
+    color:#3d8b9c;
+}
+
+h3 {
+    margin:0;
+}
+
+h3:before {
+    content: "✔";
+    padding-right: 0.5em;
+    color: #3d8b9c;
+}
+
+p { 
+    margin-top:0;
+}
+
+article p {
+    padding-left:1.5em;
+    margin-top:10px;
+}
+
+.experience-date, .education-date{
+    background-color:#3d8b9c;
+    color:#fff;
+    border-radius:5px;
+    padding:5px;
+    display:inline-block;
+    font-size:12px;
+    font-style: italic;
+    margin-left:1.5em;
+    margin-top:5px;
+}
+
+main {
+    max-width: 1140px;
+    padding-top:40px;
+}
+
+section {
+    /*
+    display:inline-block;
+    vertical-align: top;
+    */
+    margin-bottom:20px;
+}
+
+footer {
+    padding: 1em 1.5em;
+    color:#fff;
+}
+
+footer a {
+    color: wheat;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#skills-content, #experience-content, #education-content{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.column-2{
+    /* flex-grow | flex-shrink | flex-basis */
+    -ms-flex: 0 0 45%;
+    flex: 0 0 45%;
+    max-width: 45%;
+    padding: 0 2.5%;
+}
+
+.column-1{
+    /* flex-grow | flex-shrink | flex-basis */
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .column-2 {
+        max-width: 90%;
+        -ms-flex: 0 0 90%;
+        flex: 0 0 90%;
+    }
+
+    main, header {
+        padding: 0 15px;
+    }
+
+    header {
+        padding-bottom: 15px;;
+    }
+}
